@@ -98,11 +98,11 @@ resource "aws_subnet" "public" {
 
   tags = merge(
     {
-      "Name" = format(
-        "%s-${var.public_subnet_suffix}-%s",
-        var.name,
-        element(var.azs, count.index),
-      )
+        "Name" = format(
+            "%s-${var.public_subnet_suffix}-%s",
+            var.name,
+            element(var.azs, count.index),
+        )
     },
     var.business_tags,
     var.technical_tags,
