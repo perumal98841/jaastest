@@ -72,7 +72,7 @@ variable "igwname" {
 variable "public_subnet_suffix" {
   description = "Suffix to append to public subnets name"
   type        = string
-  default     = "public"
+  default     = "public_ext"
 }
 
 variable "public_subnet_name" {
@@ -84,7 +84,7 @@ variable "public_subnet_name" {
 variable "private_subnet_suffix" {
   description = "Suffix to append to private subnets name"
   type        = string
-  default     = "private"
+  default     = "private_int"
 }
 
 variable "private_subnets" {

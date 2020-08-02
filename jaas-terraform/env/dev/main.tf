@@ -1,7 +1,7 @@
 module "dev_vpc" {
     source      = "../../modules/vpc"
     aws_region = "us-east-1"
-    name = "jaas"
+    name = "jaas-dev"
     vpcname ="jaas-dev-vpc"
     cidr    = "10.8.24.0/24"
     azs = ["us-east-1","us-east-2"]
