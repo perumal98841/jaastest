@@ -17,7 +17,7 @@ resource "aws_subnet" "main" {
 
   tags = merge(
     {
-      "Name" = format("%s", var.name)
+      "Name" = format("%s", var.subnetname)
     },
     var.business_tags,
     var.technical_tags,
