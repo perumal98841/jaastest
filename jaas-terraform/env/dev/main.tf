@@ -11,7 +11,7 @@ module "dev_vpc" {
     enable_nat_gateway = true
     single_nat_gateway = true
     
-    igwname = "IGW"
+    igwname = "jaas_dev_igw"
     public_subnet_name = "PUBLIC"
     business_tags = {
         BU = "ProductIT"
