@@ -4,7 +4,8 @@ module "dev_vpc" {
     subnet_cidr = "10.8.24.0/28"
     vpc_id      = "${module.dev_vpc.vpc_id}"
     aws_region = "us-east-1"
-    name = "DEV-VPC"
+    vpcname = "DEV-VPC"
+    subnetname = "Public-subnet"
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"

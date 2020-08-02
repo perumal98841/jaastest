@@ -2,9 +2,13 @@ resource "aws_vpc" "main" {
   cidr_block       = var.vpc_cidr
   instance_tenancy = var.vpc_tenancy
 
-  tags = {
-    Name = "main"
-  }
+   tags = merge(
+    {
+      "Name" = format("%s", var.vpcname)
+    },
+    var.business_tags,
+    var.technical_tags,
+  )
 }
 
 resource "aws_subnet" "main" {

@@ -14,7 +14,8 @@ variable "aws_region" {
     type = string
 }
 
-variable "name" {}
+variable "vpcname" {}
+variable "subnetname" {}
 
 variable "business_tags" {
     description   =   "Additional tags for the VPC"
