@@ -11,7 +11,13 @@ resource "aws_subnet" "main" {
   vpc_id     = var.vpc_id
   cidr_block = var.subnet_cidr
 
-  tags = {
-    Name = "Main"
-  }
+  tags = merge(
+    {
+      "Name" = format("%s", var.name)
+    },
+    var.tags,
+    var.vpc_tags,
+    var.business_tags,
+    var.technical_tags,
+  )
 }
