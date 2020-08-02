@@ -1,11 +1,18 @@
 module "dev_vpc" {
     source      = "../../modules/vpc"
-    vpc_cidr    = "10.8.25.0/24"
-    subnet_cidr = "10.8.25.0/28"
-    vpc_id      = "${module.dev_vpc.vpc_id}"
     aws_region = "us-east-1"
-    vpcname = "PROD-VPC"
-    subnetname = "Public-subnet"
+    name = "jaas-prod"
+    vpcname ="jaas-prod-vpc"
+    cidr    = "10.8.25.0/24"
+    azs = ["us-east-1a","us-east-1b"]
+    public_subnets = ["10.8.25.0/28","10.8.25.16/28"]
+    private_subnets = ["10.8.25.32/28","10.8.25.48/28","10.8.25.96/27","10.8.25.128/27","10.8.25.160/28","10.8.25.176/28"]
+
+    enable_nat_gateway = true
+    single_nat_gateway = true
+    
+    igwname = "jaas_prod_igw"
+
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
@@ -13,7 +20,7 @@ module "dev_vpc" {
         Email = "perumal.varadharajulu@hidglobal.com"
     }
     technical_tags = {
-        Env = "PROD"
+        Env = "prod"
         Product = "Jenkins-as-a-Service"
     }
 }

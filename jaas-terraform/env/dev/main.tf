@@ -20,7 +20,7 @@ module "dev_vpc" {
         Email = "perumal.varadharajulu@hidglobal.com"
     }
     technical_tags = {
-        Env = "DEV"
+        Env = "dev"
         Product = "Jenkins-as-a-Service"
     }
 }
