@@ -3,7 +3,10 @@ locals {
     length(var.private_subnets),
   )
   nat_gateway_count = var.single_nat_gateway ? 1 : var.one_nat_gateway_per_az ? length(var.azs) : local.max_subnet_length
+    vpc_id = aws_vpc.main.*.id
 }
+
+
 
 resource "aws_vpc" "main" {
   cidr_block       = var.cidr
