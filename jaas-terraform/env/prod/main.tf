@@ -1,4 +1,4 @@
-module "jaas-prod_vpc" {
+module "prod_vpc" {
     source      = "../../modules/vpc"
     aws_region = "us-east-1"
     name = "jaas-prod"
