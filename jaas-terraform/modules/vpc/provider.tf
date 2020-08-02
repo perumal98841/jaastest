@@ -1,4 +1,4 @@
 #Define AWS as our Provider
-Provider "aws" {
+provider "aws" {
     region = "${var.aws_region}"
 }

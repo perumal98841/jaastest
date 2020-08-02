@@ -15,8 +15,3 @@ resource "aws_subnet" "main" {
     Name = "Main"
   }
 }
-
-
-output "vpc_id" {
-    value = "${aws_vpc.main.id}"
-}
