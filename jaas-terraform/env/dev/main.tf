@@ -1,11 +1,18 @@
 module "dev_vpc" {
     source      = "../../modules/vpc"
-    vpc_cidr    = "10.8.24.0/24"
-    subnet_cidr = "10.8.24.0/28"
-    vpc_id      = "${module.dev_vpc.vpc_id}"
     aws_region = "us-east-1"
-    vpcname = "DEV-VPC"
-    subnetname = "Public-subnet"
+    name = "jaas"
+    vpcname ="jaas-dev-vpc"
+    cidr    = "10.8.24.0/24"
+    azs = ["us-east-1","us-east-2"]
+    public_subnets = ["10.8.24.0/28","10.8.24.0/28"]
+    private_subnets = ["10.8.24.32/28","10.8.24.48/28","10.8.24.96/27","10.8.24.128/27""10.8.24.160/28","10.8.24.176/28"]
+
+    enable_nat_gateway = true
+    single_nat_gateway = true
+    
+    igwname = "IGW"
+    public_subnet_name = "PUBLIC"
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
