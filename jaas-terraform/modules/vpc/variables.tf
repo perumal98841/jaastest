@@ -75,12 +75,6 @@ variable "public_subnet_suffix" {
   default     = "public_ext"
 }
 
-variable "public_subnet_name" {
-  description = "Name to be used for Public Subnet"
-  type        = string
-  default     = ""
-}
-
 variable "private_subnet_suffix" {
   description = "Suffix to append to private subnets name"
   type        = string

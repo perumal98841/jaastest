@@ -12,7 +12,7 @@ module "dev_vpc" {
     single_nat_gateway = true
     
     igwname = "jaas_dev_igw"
-    public_subnet_name = "PUBLIC"
+
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
