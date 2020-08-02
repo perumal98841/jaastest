@@ -11,5 +11,5 @@ variable "vpc_id" {}
 variable "subnet_cidr" {}
 
 variable "aws_region" {
-    type = "string"
+    type = string
 }
