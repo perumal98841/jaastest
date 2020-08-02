@@ -1,9 +1,6 @@
 locals {
   max_subnet_length = max(
     length(var.private_subnets),
-    length(var.elasticache_subnets),
-    length(var.database_subnets),
-    length(var.redshift_subnets),
   )
   nat_gateway_count = var.single_nat_gateway ? 1 : var.one_nat_gateway_per_az ? length(var.azs) : local.max_subnet_length
 }
@@ -29,7 +26,8 @@ resource "aws_internet_gateway" "this" {
     {
       "Name" = format("%s", var.igwname)
     },
-    var.tags,
+    var.business_tags,
+    var.technical_tags,
   )
 }
 
@@ -42,7 +40,8 @@ resource "aws_route_table" "public" {
     {
       "Name" = format("%s-${var.public_subnet_suffix}", var.public_subnet_name)
     },
-    var.tags,
+    var.business_tags,
+    var.technical_tags,
   )
 }
 
@@ -72,7 +71,8 @@ resource "aws_route_table" "private" {
         element(var.azs, count.index),
       )
     },
-    var.tags,
+    var.business_tags,
+    var.technical_tags,
   )
 
 }
@@ -95,7 +95,8 @@ resource "aws_subnet" "public" {
         element(var.azs, count.index),
       )
     },
-    var.tags,
+    var.business_tags,
+    var.technical_tags,
   )
 }
 
@@ -116,6 +117,7 @@ resource "aws_subnet" "private" {
         element(var.azs, count.index),
       )
     },
-    var.tags,
+    var.business_tags,
+    var.technical_tags,
   )
 }

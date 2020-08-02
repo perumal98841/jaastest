@@ -1,7 +1,19 @@
+variable "aws_region" {
+  description = "Region to be used on all the resources creation"
+  type        = string
+  default     = ""
+}
+
 variable "name" {
   description = "Name to be used on all the resources as identifier"
   type        = string
   default     = ""
+}
+
+variable "enable_nat_gateway" {
+  description = "Should be true if you want to provision NAT Gateways for each of your private networks"
+  type        = bool
+  default     = false
 }
 
 variable "single_nat_gateway" {
@@ -73,6 +85,12 @@ variable "private_subnet_suffix" {
   description = "Suffix to append to private subnets name"
   type        = string
   default     = "private"
+}
+
+variable "private_subnets" {
+  description = "A list of private subnets inside the VPC"
+  type        = list(string)
+  default     = []
 }
 
 variable "map_public_ip_on_launch" {
