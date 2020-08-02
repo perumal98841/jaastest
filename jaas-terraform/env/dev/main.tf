@@ -4,7 +4,7 @@ module "dev_vpc" {
     name = "jaas-dev"
     vpcname ="jaas-dev-vpc"
     cidr    = "10.8.24.0/24"
-    azs = ["us-east-1","us-east-2"]
+    azs = ["us-east-1a","us-east-1b"]
     public_subnets = ["10.8.24.0/28","10.8.24.16/28"]
     private_subnets = ["10.8.24.32/28","10.8.24.48/28","10.8.24.96/27","10.8.24.128/27","10.8.24.160/28","10.8.24.176/28"]
 
