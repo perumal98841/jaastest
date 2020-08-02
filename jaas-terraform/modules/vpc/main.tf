@@ -15,8 +15,6 @@ resource "aws_subnet" "main" {
     {
       "Name" = format("%s", var.name)
     },
-    var.tags,
-    var.vpc_tags,
     var.business_tags,
     var.technical_tags,
   )
