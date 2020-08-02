@@ -33,7 +33,7 @@ resource "aws_internet_gateway" "this" {
   vpc_id = local.vpc_id
   tags = merge(
     {
-      "Name" = format("%s", var.igwname)
+      "Name" = format("%s_igw", var.name)
     },
     var.business_tags,
     var.technical_tags,

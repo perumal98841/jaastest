@@ -63,28 +63,22 @@ variable "public_subnets" {
   default     = []
 }
 
-variable "igwname" {
-  description = "Name to be used for VPC"
-  type        = string
-  default     = ""
-}
-
 variable "public_subnet_suffix" {
   description = "Suffix to append to public subnets name"
   type        = string
   default     = "public_ext"
 }
 
-variable "private_subnet_suffix" {
-  description = "Suffix to append to private subnets name"
-  type        = string
-  default     = "private_int"
-}
-
 variable "private_subnets" {
   description = "A list of private subnets inside the VPC"
   type        = list(string)
   default     = []
+}
+
+variable "private_subnet_suffix" {
+  description = "Suffix to append to private subnets name"
+  type        = string
+  default     = "private_int"
 }
 
 variable "map_public_ip_on_launch" {
