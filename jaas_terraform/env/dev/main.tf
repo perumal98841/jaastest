@@ -16,7 +16,7 @@ module "jaas_dev_vpc" {
     private_subnets = ["10.8.24.32/28","10.8.24.48/28","10.8.24.96/27","10.8.24.128/27","10.8.24.160/28","10.8.24.176/28"]
 
     enable_nat_gateway = true
-    single_nat_gateway = false
+    single_nat_gateway = true
     one_nat_gateway_per_az = false
     reuse_nat_ips = true
     external_nat_ip_ids = "${aws_eip.nat.*.id}"
