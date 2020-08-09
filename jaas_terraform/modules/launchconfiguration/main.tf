@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "this" {
   count = var.create_lc ? 1 : 0
-
+  name                        = var.name
   image_id                    = var.image_id
   instance_type               = var.instance_type
   iam_instance_profile        = var.iam_instance_profile

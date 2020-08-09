@@ -1,4 +1,4 @@
-module "sg_jaas_agent" {
+module "lc_jaas_master" {
     source      = "../../modules/launchconfiguration"
     aws_region = "us-east-1"
     name                = "jaas-dev-lc-jaas-master"
