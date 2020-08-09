@@ -1,3 +1,8 @@
+resource "aws_eip" "nat" {
+  count = 2
+
+  vpc = true
+}
 module "jaas_dev_vpc" {
     source      = "../../modules/vpc"
     aws_region = "us-east-1"
@@ -10,6 +15,7 @@ module "jaas_dev_vpc" {
 
     enable_nat_gateway = true
     single_nat_gateway = true
+    reuse_nat_ips = true
     
     business_tags = {
         BU = "ProductIT"
