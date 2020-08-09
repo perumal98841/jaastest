@@ -5,10 +5,10 @@ locals {
   )[0]
 }
 
-resource "aws_security_group" "this_name_prefix" {
+resource "aws_security_group" "this" {
   count = var.create && var.use_name_prefix ? 1 : 0
 
-  name_prefix            = "${var.name}-"
+  name                   = var.name
   description            = var.description
   vpc_id                 = var.vpc_id
   revoke_rules_on_delete = var.revoke_rules_on_delete

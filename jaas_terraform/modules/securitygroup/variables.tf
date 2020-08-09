@@ -24,7 +24,7 @@ variable "name" {
 variable "description" {
   description = "Description of security group"
   type        = string
-  default     = "Security Group for Jenkins-as-a-Service, managed by Terraform"
+  default     = ""
 }
 
 variable "vpc_id" {
