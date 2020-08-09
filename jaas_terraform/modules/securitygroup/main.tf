@@ -1,6 +1,5 @@
 locals {
   this_sg_id = concat(
-    aws_security_group.this.*.id,
     aws_security_group.this_name_prefix.*.id,
     [""],
   )[0]
@@ -15,7 +14,6 @@ resource "aws_security_group" "this_name_prefix" {
   revoke_rules_on_delete = var.revoke_rules_on_delete
 
   tags = merge(
-    var.tags,
     {
       "Name" = format("%s", var.name)
     },

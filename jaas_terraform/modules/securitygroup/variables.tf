@@ -37,3 +37,14 @@ variable "revoke_rules_on_delete" {
   type        = bool
   default     = false
 }
+
+variable "business_tags" {
+    description   =   "Additional tags for the VPC"
+    type          =   map(string)
+    default       =   {}
+}
+variable "technical_tags" {
+    description   =   "Additional tags for the VPC"
+    type          =   map(string)
+    default       =   {}
+}
