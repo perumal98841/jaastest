@@ -1,7 +1,6 @@
 resource "aws_eip" "nat" {
   count = 2
-
-  vpc = true
+  aws_region = "us-east-1"
 }
 module "jaas_dev_vpc" {
     source      = "../../modules/vpc"
