@@ -25,6 +25,12 @@ module "jaas_dev_sg" {
     },
   ]
 
+    egress_with_cidr_blocks = [
+    {
+      rule        = "all-all"
+      cidr_blocks = "0.0.0.0/0"
+    },
+  ]
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"

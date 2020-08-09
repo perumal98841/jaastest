@@ -76,3 +76,55 @@ resource "aws_security_group_rule" "ingress_with_cidr_blocks" {
     var.rules[lookup(var.ingress_with_cidr_blocks[count.index], "rule", "_")][2],
   )
 }
+
+resource "aws_security_group_rule" "egress_rules" {
+  count = var.create ? length(var.egress_rules) : 0
+
+  security_group_id = local.this_sg_id
+  type              = "egress"
+
+  cidr_blocks      = var.egress_cidr_blocks
+  description      = var.rules[var.egress_rules[count.index]][3]
+
+  from_port = var.rules[var.egress_rules[count.index]][0]
+  to_port   = var.rules[var.egress_rules[count.index]][1]
+  protocol  = var.rules[var.egress_rules[count.index]][2]
+}
+
+resource "aws_security_group_rule" "egress_with_cidr_blocks" {
+  count = var.create ? length(var.egress_with_cidr_blocks) : 0
+
+  security_group_id = local.this_sg_id
+  type              = "egress"
+
+  cidr_blocks = split(
+    ",",
+    lookup(
+      var.egress_with_cidr_blocks[count.index],
+      "cidr_blocks",
+      join(",", var.egress_cidr_blocks),
+    ),
+  )
+  prefix_list_ids = var.egress_prefix_list_ids
+  description = lookup(
+    var.egress_with_cidr_blocks[count.index],
+    "description",
+    "Egress Rule",
+  )
+
+  from_port = lookup(
+    var.egress_with_cidr_blocks[count.index],
+    "from_port",
+    var.rules[lookup(var.egress_with_cidr_blocks[count.index], "rule", "_")][0],
+  )
+  to_port = lookup(
+    var.egress_with_cidr_blocks[count.index],
+    "to_port",
+    var.rules[lookup(var.egress_with_cidr_blocks[count.index], "rule", "_")][1],
+  )
+  protocol = lookup(
+    var.egress_with_cidr_blocks[count.index],
+    "protocol",
+    var.rules[lookup(var.egress_with_cidr_blocks[count.index], "rule", "_")][2],
+  )
+}
