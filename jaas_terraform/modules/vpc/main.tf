@@ -140,7 +140,30 @@ locals {
 resource "aws_eip" "nat" {
   count = var.enable_nat_gateway && false == var.reuse_nat_ips ? local.nat_gateway_count : 0
 
-  vpc = true
+  tags = merge(
+    {
+      "Name" = format(
+        "%s-%s",
+        var.name,
+        element(var.azs, var.single_nat_gateway ? 0 : count.index),
+      )
+    },
+    var.business_tags,
+    var.technical_tags,
+  )
+}
+
+resource "aws_nat_gateway" "this" {
+  count = var.enable_nat_gateway ? local.nat_gateway_count : 0
+
+  allocation_id = element(
+    local.nat_gateway_ips,
+    var.single_nat_gateway ? 0 : count.index,
+  )
+  subnet_id = element(
+    aws_subnet.public.*.id,
+    var.single_nat_gateway ? 0 : count.index,
+  )
 
   tags = merge(
     {
@@ -153,4 +176,18 @@ resource "aws_eip" "nat" {
     var.business_tags,
     var.technical_tags,
   )
+
+  depends_on = [aws_internet_gateway.this]
+}
+
+resource "aws_route" "private_nat_gateway" {
+  count = var.enable_nat_gateway ? local.nat_gateway_count : 0
+
+  route_table_id         = element(aws_route_table.private.*.id, count.index)
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = element(aws_nat_gateway.this.*.id, count.index)
+
+  timeouts {
+    create = "5m"
+  }
 }

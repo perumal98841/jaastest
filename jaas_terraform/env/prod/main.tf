@@ -17,7 +17,8 @@ module "jaas_prod_vpc" {
 
     enable_nat_gateway = true
     single_nat_gateway = true
-    
+    reuse_nat_ips = true
+    external_nat_ip_ids = "${aws_eip.nat.*.id}"    
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
