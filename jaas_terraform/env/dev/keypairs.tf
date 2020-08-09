@@ -1,4 +1,4 @@
-module "key_pair" {
+module "master_key_pair" {
     source      = "../../modules/keypair"
 
   key_name   = "jaas-dev-master-key"
@@ -6,7 +6,7 @@ module "key_pair" {
 
 }
 
-module "key_pair" {
+module "agent_key_pair" {
     source      = "../../modules/keypair"
 
   key_name   = "jaas-dev-agent-key"
