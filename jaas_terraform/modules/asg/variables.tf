@@ -204,15 +204,3 @@ variable "initial_lifecycle_hook_default_result" {
   type        = string
   default     = "ABANDON"
 }
-
-variable "business_tags" {
-    description   =   "Additional tags for the VPC"
-    type          =   map(string)
-    default       =   {}
-}
-variable "technical_tags" {
-    description   =   "Additional tags for the VPC"
-    type          =   map(string)
-    default       =   {}
-}
-

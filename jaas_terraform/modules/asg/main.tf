@@ -35,18 +35,6 @@ resource "aws_autoscaling_group" "this_with_initial_lifecycle_hook" {
     default_result          = var.initial_lifecycle_hook_default_result
   }
 
-    tags = concat(
-    [
-      {
-        "key"                 = "Name"
-        "value"               = var.asg_name
-        "propagate_at_launch" = true
-      },
-    ],
-    var.business_tags,
-    var.technical_tags,
-  )
-
   lifecycle {
     create_before_destroy = true
   }

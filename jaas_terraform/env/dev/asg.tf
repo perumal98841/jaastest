@@ -15,16 +15,4 @@ module "master_asg" {
     desired_capacity          = 1
     wait_for_capacity_timeout = 0
 
-
-    business_tags = {
-        BU = "ProductIT"
-        CostCenter = "6465"
-        Owner = "Perumal Varadharajulu"
-        Email = "perumal.varadharajulu@hidglobal.com"
-    }
-    technical_tags = {
-        Env = "dev"
-        Product = "Jenkins-as-a-Service"
-        Terraform = "True"
-    }
 }
