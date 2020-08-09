@@ -11,8 +11,6 @@ module "jaas_prod_vpc" {
     enable_nat_gateway = true
     single_nat_gateway = true
     
-    igwname = "jaas_prod_igw"
-
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"

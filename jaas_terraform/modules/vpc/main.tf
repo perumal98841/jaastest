@@ -12,8 +12,6 @@ locals {
   )
 }
 
-
-
 resource "aws_vpc" "main" {
   cidr_block       = var.cidr
   instance_tenancy = var.instance_tenancy
@@ -26,7 +24,6 @@ resource "aws_vpc" "main" {
     var.technical_tags,
   )
 }
-
 
 resource "aws_internet_gateway" "this" {
   count = var.create_igw && length(var.public_subnets) > 0 ? 1 : 0
