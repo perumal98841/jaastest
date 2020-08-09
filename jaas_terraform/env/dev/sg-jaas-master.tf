@@ -1,7 +1,7 @@
-module "jaas_dev_sg" {
+module "sg_jaas_master" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
-    name = "jaas-dev-sg"
+    name = "jaas-dev-sg-jaas-master"
     vpc_id = module.jaas_dev_vpc.vpc_id
     description = "Security Group for Jenkins-as-a-Service, managed by Terraform"
     ingress_with_cidr_blocks = [
