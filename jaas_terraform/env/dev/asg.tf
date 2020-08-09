@@ -2,6 +2,8 @@ module "master_asg" {
     source      = "../../modules/asg"
 
     create_lc   =   false
+    create_asg = true
+    create_asg_with_initial_lifecycle_hook = true
     launch_configuration    =   module.lc_jaas_master.lc_id
     name        =   "jaas-dev"
     asg_name    =   "jaas-dev-asg"
