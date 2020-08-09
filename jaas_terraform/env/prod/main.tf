@@ -4,6 +4,15 @@ provider "aws" {
 
 resource "aws_eip" "nat" {
   count = 2
+   tags = {
+        BU = "ProductIT"
+        CostCenter = "6465"
+        Owner = "Perumal Varadharajulu"
+        Email = "perumal.varadharajulu@hidglobal.com"
+        Env = "prod"
+        Product = "Jenkins-as-a-Service"
+        Terraform = "True"
+    } 
 }
 module "jaas_prod_vpc" {
     source      = "../../modules/vpc"
