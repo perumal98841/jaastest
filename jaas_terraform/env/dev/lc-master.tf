@@ -7,16 +7,4 @@ module "lc_jaas_master" {
     instance_type       = "t3a.small"
     key_name            = module.master_key_pair.this_key_pair_key_pair_id
     security_groups     = module.sg_jaas_master.this_security_group_id
-
-    business_tags = {
-        BU = "ProductIT"
-        CostCenter = "6465"
-        Owner = "Perumal Varadharajulu"
-        Email = "perumal.varadharajulu@hidglobal.com"
-    }
-    technical_tags = {
-        Env = "dev"
-        Product = "Jenkins-as-a-Service"
-        Terraform = "True"
-    }
 }
