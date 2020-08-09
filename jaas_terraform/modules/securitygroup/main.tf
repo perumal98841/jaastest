@@ -1,8 +1,5 @@
 locals {
-  this_sg_id = concat(
-    aws_security_group.this.*.id,
-    [""],
-  )[0]
+this_sg_id = element(concat(aws_security_group.this.*.id,[""],),0,)
 }
 
 resource "aws_security_group" "this" {
