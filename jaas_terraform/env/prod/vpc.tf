@@ -41,5 +41,3 @@ module "jaas_prod_vpc" {
         Terraform = "True"
     }
 }
-
-
