@@ -105,7 +105,6 @@ resource "aws_security_group_rule" "egress_with_cidr_blocks" {
       join(",", var.egress_cidr_blocks),
     ),
   )
-  prefix_list_ids = var.egress_prefix_list_ids
   description = lookup(
     var.egress_with_cidr_blocks[count.index],
     "description",
