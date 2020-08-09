@@ -20,6 +20,7 @@ module "jaas_prod_vpc" {
     technical_tags = {
         Env = "prod"
         Product = "Jenkins-as-a-Service"
+        Terraform = "True"
     }
 }
 
