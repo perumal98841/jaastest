@@ -1,15 +1,6 @@
 resource "aws_autoscaling_group" "this_with_initial_lifecycle_hook" {
   count = var.create_asg && var.create_asg_with_initial_lifecycle_hook ? 1 : 0
 
-  name_prefix = "${join(
-    "-",
-    compact(
-      [
-        coalesce(var.asg_name, var.name),
-        var.recreate_asg_when_lc_changes ? element(concat(random_pet.asg_name.*.id, [""]), 0) : "",
-      ],
-    ),
-  )}-"
   launch_configuration = var.launch_configuration
   vpc_zone_identifier  = var.vpc_zone_identifier
   max_size             = var.max_size
@@ -44,14 +35,10 @@ resource "aws_autoscaling_group" "this_with_initial_lifecycle_hook" {
     default_result          = var.initial_lifecycle_hook_default_result
   }
 
-  tags = concat(
-    [
-      {
-        "key"                 = "Name"
-        "value"               = var.name
-        "propagate_at_launch" = true
-      },
-    ],
+  tags = merge(
+    {
+      "Name" = format("%s", var.asg_name)
+    },
     var.business_tags,
     var.technical_tags,
   )
