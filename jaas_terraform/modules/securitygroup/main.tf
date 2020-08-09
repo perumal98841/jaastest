@@ -1,6 +1,6 @@
 locals {
   this_sg_id = concat(
-    aws_security_group.this_name_prefix.*.id,
+    aws_security_group.this.*.id,
     [""],
   )[0]
 }
