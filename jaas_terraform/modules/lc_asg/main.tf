@@ -63,8 +63,6 @@ resource "aws_autoscaling_group" "this" {
         "propagate_at_launch" = true
       },
     ],
-    [var.business_tags],
-    [var.technical_tags],
   )
 
   lifecycle {
