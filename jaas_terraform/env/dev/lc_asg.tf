@@ -10,7 +10,7 @@ module "jaas_lc_asg" {
   # create_lc = false # disables creation of launch configuration
   lc_name = "example-lc"
 
-  image_id                     = ami-0e942c59119284089
+  image_id                     = "ami-0e942c59119284089"
   instance_type                = "t3a.small"
   security_groups              = module.sg_jaas_master.this_security_group_id
   recreate_asg_when_lc_changes = true

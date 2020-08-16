@@ -1,3 +1,9 @@
+variable "aws_region" {
+  description = "Region to be used on all the resources creation"
+  type        = string
+  default     = ""
+}
+
 variable "create_lc" {
   description = "Whether to create launch configuration"
   type        = bool
@@ -11,6 +17,12 @@ variable "name" {
 
 variable "lc_name" {
   description = "Creates a unique name for launch configuration beginning with the specified prefix"
+  type        = string
+  default     = ""
+}
+
+variable "launch_configuration" {
+  description = "The name of the launch configuration to use (if it is created outside of this module)"
   type        = string
   default     = ""
 }

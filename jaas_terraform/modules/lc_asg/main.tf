@@ -11,9 +11,7 @@ resource "aws_launch_configuration" "this" {
   user_data                   = var.user_data
   user_data_base64            = var.user_data_base64
   enable_monitoring           = var.enable_monitoring
-  placement_tenancy           = var.spot_price == "" ? var.placement_tenancy : ""
-  ebs_optimized               = var.ebs_optimized
-
+ 
   lifecycle {
     create_before_destroy = true
   }
@@ -65,8 +63,8 @@ resource "aws_autoscaling_group" "this" {
         "propagate_at_launch" = true
       },
     ],
-    var.business_tags,
-    var.technical_tags,
+    [var.business_tags],
+    [var.technical_tags],
   )
 
   lifecycle {
