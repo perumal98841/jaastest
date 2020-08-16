@@ -1,3 +1,8 @@
+data  "aws_lb" "this" {
+    name = 
+}
+
+
 module "records" {
     source      = "../../modules/route53_record"
 
@@ -8,7 +13,7 @@ module "records" {
       name = "jenkins"
       type = "CNAME"
       ttl  = 3600
-      records = module.jaas_dev_alb.this_lb_dns_name
+      records = ["${module.jaas_dev_alb.this_lb_dns_name}"]
     },
   ]
 }
