@@ -17,7 +17,7 @@ module "jaas_lc_asg" {
 
   # Auto scaling group
   asg_name                  = "example-asg"
-  vpc_zone_identifier       = module.jaas_dev_vpc.private_subnets
+  vpc_zone_identifier       = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
   health_check_type         = "EC2"
   min_size                  = 0
   max_size                  = 1
