@@ -72,16 +72,4 @@ module "jaas_dev_alb" {
       lambda_multi_value_headers_enabled = true
     },
   ]
-
-  tags = {
-    Project = "Unknown"
-  }
-
-  lb_tags = {
-    MyLoadBalancer = "foo"
-  }
-
-  target_group_tags = {
-    MyGlobalTargetGroupTag = "bar"
-  }
 }
