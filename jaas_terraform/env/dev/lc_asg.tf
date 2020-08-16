@@ -8,15 +8,16 @@ module "jaas_lc_asg" {
   #
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
-  lc_name = "example-lc"
+  lc_name = "jaas-dev-lc"
 
   image_id                     = "ami-0e942c59119284089"
   instance_type                = "t3a.small"
+  key_name                     = module.keypair_master.this_key_pair_key_name
   security_groups              = module.sg_jaas_master.this_security_group_id
   recreate_asg_when_lc_changes = true
 
   # Auto scaling group
-  asg_name                  = "example-asg"
+  asg_name                  = "jaas-dev-asg"
   vpc_zone_identifier       = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
   health_check_type         = "EC2"
   min_size                  = 0
