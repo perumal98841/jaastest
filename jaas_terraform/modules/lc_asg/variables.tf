@@ -246,9 +246,3 @@ variable "technical_tags" {
     type          =   map(string)
     default       =   {}
 }
-
-variable "target_group_arns" {
-  description = "ARNs of the target groups. Useful for passing to your Auto Scaling group."
-  type        = list(string)
-  default     = []
-}
