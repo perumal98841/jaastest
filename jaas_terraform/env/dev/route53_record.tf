@@ -1,8 +1,3 @@
-data  "aws_lb" "this" {
-    name = 
-}
-
-
 module "records" {
     source      = "../../modules/route53_record"
 
