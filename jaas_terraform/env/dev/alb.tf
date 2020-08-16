@@ -18,13 +18,7 @@ module "jaas_dev_alb" {
   http_tcp_listeners = [
     # Forward action is default, either when defined or undefined
     {
-      port               = 80
-      protocol           = "HTTP"
-      target_group_index = 0
-      # action_type        = "forward"
-    },
-    {
-      port        = 81
+      port        = 80
       protocol    = "HTTP"
       action_type = "redirect"
       redirect = {
@@ -46,7 +40,7 @@ module "jaas_dev_alb" {
 
   target_groups = [
     {
-      name_prefix          = "h1"
+      name_prefix          = "jaas-dev-master"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "instance"
@@ -65,11 +59,6 @@ module "jaas_dev_alb" {
       tags = {
         InstanceTargetGroupTag = "baz"
       }
-    },
-    {
-      name_prefix                        = "l1-"
-      target_type                        = "lambda"
-      lambda_multi_value_headers_enabled = true
     },
   ]
 }
