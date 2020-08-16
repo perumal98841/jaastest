@@ -40,7 +40,7 @@ module "jaas_dev_alb" {
 
   target_groups = [
     {
-      name_prefix          = "jaas-dev-master"
+      name_prefix          = "h1"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "instance"
