@@ -4,7 +4,7 @@ resource "random_pet" "this" {
 
 #### Application Load Balancer ####
 module "jaas_dev_alb" {
-    source      = "../../modules/elb"
+    source      = "../../modules/alb"
 
   name = "jaas-dev-alb-${random_pet.this.id}"
 
@@ -34,7 +34,7 @@ module "jaas_dev_alb" {
       port               = 443
       protocol           = "HTTPS"
       certificate_arn    = "arn:aws:acm:us-east-1:187945997467:certificate/954a2440-c467-481e-b3bc-5c2622f279b5"
-      target_group_index = 1
+      target_group_index = 0
     },
   ]
 
