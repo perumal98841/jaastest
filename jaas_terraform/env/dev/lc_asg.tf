@@ -2,7 +2,7 @@ module "jaas_lc_asg" {
     source      = "../../modules/lc_asg"
     aws_region = "us-east-1"
 
-  name = "example-with-ec2"
+  name = "jaas-dev-master"
 
   # Launch configuration
   #
