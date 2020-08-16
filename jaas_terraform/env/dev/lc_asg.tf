@@ -24,7 +24,7 @@ module "jaas_lc_asg" {
   max_size                  = 1
   desired_capacity          = 1
   wait_for_capacity_timeout = 0
-
+  target_group_arns = module.jaas_dev_alb.target_group_arns
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
