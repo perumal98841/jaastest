@@ -46,8 +46,4 @@ resource "aws_instance" "this" {
     var.business_tags,
     var.technical_tags,
   )
-
-  credit_specification {
-    cpu_credits = local.is_t_instance_type ? var.cpu_credits : null
-  }
 }

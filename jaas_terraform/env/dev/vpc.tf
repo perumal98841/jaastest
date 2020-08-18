@@ -21,7 +21,7 @@ module "jaas_dev_vpc" {
     vpcname ="jaas-dev-vpc"
     cidr    = "10.8.24.0/24"
     azs = ["us-east-1a","us-east-1b"]
-    public_subnets = ["10.8.24.0/28","10.8.24.16/28","",""]
+    public_subnets = ["10.8.24.0/28","10.8.24.16/28"]
     private_subnets = ["10.8.24.32/28","10.8.24.48/28","10.8.24.96/27","10.8.24.128/27","10.8.24.160/28","10.8.24.176/28"]
 
     enable_nat_gateway = true

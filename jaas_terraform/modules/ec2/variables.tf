@@ -85,6 +85,13 @@ variable "associate_public_ip_address" {
   default     = null
 }
 
+
+variable "private_ip" {
+  description = "Private IP address to associate with the instance in a VPC"
+  type        = string
+  default     = null
+}
+
 variable "private_ips" {
   description = "A list of private IP address to associate with the instance in a VPC. Should match the number of instances."
   type        = list(string)
@@ -98,7 +105,7 @@ variable "disable_api_termination" {
 }
 
 variable "instance_initiated_shutdown_behavior" {
-  description = "Shutdown behavior for the instance" # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior
+  description = "Shutdown behavior for the instance" 
   type        = string
   default     = ""
 }
@@ -114,6 +121,24 @@ variable "tenancy" {
   description = "The tenancy of the instance (if the instance is running in a VPC). Available values: default, dedicated, host."
   type        = string
   default     = "default"
+}
+
+variable "source_dest_check" {
+  description = "Controls if traffic is routed to the instance when the destination address does not match the instance. Used for NAT or VPNs."
+  type        = bool
+  default     = true
+}
+
+variable "use_num_suffix" {
+  description = "Always append numerical suffix to instance name, even if instance_count is 1"
+  type        = bool
+  default     = false
+}
+
+variable "num_suffix_format" {
+  description = "Numerical suffix format used as the volume and EC2 instance name suffix"
+  type        = string
+  default     = "-%d"
 }
 
 variable "business_tags" {
