@@ -7,12 +7,13 @@ if [ "$Environment" == "DEV" ]; then
 	export AWS_SECRET_ACCESS_KEY=$DEV_AWS_SECRET_ACCESS_KEY
     mv dev.terraform.tfstate terraform.tfstate
     mv dev.terraform.tfstate.backup terraform.tfstate.backup
+    terraform init jaas_terraform/env/dev
     terraform destroy -auto-approve jaas_terraform/env/dev
     ls -ls
     echo "=========================="
     ls | grep -v prod.terraform.tfstate |grep -v prod.terraform.tfstate.backup | xargs rm -Rf
     echo "=========================="
-    rm -f ../jaas_deploy/dev.terraform.tfstate
+    #rm -f ../jaas_deploy/dev.terraform.tfstate
     ls -ls
 
     }
@@ -24,12 +25,13 @@ else
 	export AWS_SECRET_ACCESS_KEY=$PROD_AWS_SECRET_ACCESS_KEY
     mv prod.terraform.tfstate terraform.tfstate
     mv prod.terraform.tfstate.backup terraform.tfstate.backup
+    terraform init jaas_terraform/env/prod
     terraform destroy -auto-approve jaas_terraform/env/prod
 	ls -ls
     echo "=========================="
     ls | grep -v dev.terraform.tfstate | grep -v dev.terraform.tfstate.backup | xargs rm -Rf
     echo "=========================="
-        rm -f ../jaas_deploy/prod.terraform.tfstate
+    #rm -f ../jaas_deploy/prod.terraform.tfstate
 	ls -ls
     }
 fi
