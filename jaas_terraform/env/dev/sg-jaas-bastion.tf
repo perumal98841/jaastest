@@ -24,7 +24,7 @@ module "sg_jaas_bastion" {
     }
     technical_tags = {
         Env = "dev"
-        Product = "Bastion"
+        Product = "JaaS-Bastion"
         Terraform = "True"
     }
 }
