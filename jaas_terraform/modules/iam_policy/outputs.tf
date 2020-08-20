@@ -10,20 +10,20 @@ output "arn" {
 
 output "description" {
   description = "The description of the policy"
-  value       = aws_iam_policy.policy.policy_description
+  value       = aws_iam_policy.policy.description
 }
 
 output "name" {
   description = "The name of the policy"
-  value       = aws_iam_policy.policy.policy_name
+  value       = aws_iam_policy.policy.name
 }
 
 output "path" {
   description = "The path of the policy in IAM"
-  value       = aws_iam_policy.policy.policy_path
+  value       = aws_iam_policy.policy.path
 }
 
 output "policy" {
   description = "The policy document"
-  value       = aws_iam_policy.policy.policy_policy
+  value       = aws_iam_policy.policy.policy
 }
