@@ -20,4 +20,5 @@ module "jaas_dev_bastion" {
         Product = "JaaS-Bastion"
         Terraform = "True"
     }  
+    
 }
