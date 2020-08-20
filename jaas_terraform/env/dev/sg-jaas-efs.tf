@@ -10,15 +10,7 @@ module "sg_jaas_efs" {
       cidr_blocks = "0.0.0.0/0"
     },
     {
-      rule        = "https-443-tcp"
-      cidr_blocks = "0.0.0.0/0"
-    },
-    {
       rule        = "rdp-tcp"
-      cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
-    },
-    {
-      rule        = "ssh-tcp"
       cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
     },
   ]
