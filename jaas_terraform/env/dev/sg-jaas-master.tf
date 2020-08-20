@@ -19,7 +19,7 @@ module "sg_jaas_master" {
     },
     {
       rule        = "ssh-tcp"
-      cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
+      cidr_blocks = "10.3.138.192/27,10.3.138.32/27,10.8.24.0/28,10.8.24.16/28"
     },
   ]
     egress_with_cidr_blocks = [
