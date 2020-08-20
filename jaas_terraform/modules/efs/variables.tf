@@ -5,6 +5,17 @@ variable "aws_region" {
   default     = ""
 }
 
+variable "name" {
+  type        = string
+  default     = ""
+  description = "Solution name, e.g. 'app' or 'jenkins'"
+}
+
+variable "security_groups" {
+  type        = list(string)
+  description = "Security group IDs to allow access to the EFS"
+}
+
 variable "enabled" {
   type        = bool
   default     = true
