@@ -4,4 +4,5 @@ resource "aws_iam_policy" "policy" {
   description = var.policy_description
 
   policy = var.policy
+  role = var.role
 }

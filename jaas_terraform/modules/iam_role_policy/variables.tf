@@ -21,3 +21,9 @@ variable "policy" {
   type        = string
   default     = ""
 }
+
+variable "role" {
+  description = " The IAM role to attach to the policy"
+  type        = string
+  default     = ""
+}
