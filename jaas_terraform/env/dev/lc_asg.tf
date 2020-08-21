@@ -15,7 +15,7 @@ module "jaas_lc_asg" {
   key_name                     = module.keypair_master.this_key_pair_key_name
   security_groups              = module.sg_jaas_master.this_security_group_id
   recreate_asg_when_lc_changes = true
-
+  iam_instance_profile = module.jaas_iam_instance_profile.name
   # Auto scaling group
   asg_name                  = "jaas-dev-asg"
   vpc_zone_identifier       = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]

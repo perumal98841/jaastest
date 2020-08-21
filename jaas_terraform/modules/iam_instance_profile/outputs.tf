@@ -1,14 +1,14 @@
 output "id" {
-  description = "The policy's ID"
-  value       = aws_iam_role.this.id
+  description = "The instance profile's ID"
+  value       = aws_iam_instance_profile.this.id
 }
 
 output "arn" {
-  description = "The ARN assigned by AWS to this policy"
-  value       = aws_iam_role.this.arn
+  description = "The ARN assigned by AWS to the instance profile"
+  value       = aws_iam_instance_profile.this.arn
 }
 
 output "name" {
-  description = "The name of the policy"
-  value       = aws_iam_role.this.name
+  description = "The instance profile's name"
+  value       = aws_iam_instance_profile.this.name
 }
