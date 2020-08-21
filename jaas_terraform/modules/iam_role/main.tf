@@ -9,6 +9,6 @@ resource "aws_iam_role" "this" {
   force_detach_policies = var.force_detach_policies
   permissions_boundary  = var.role_permissions_boundary_arn
 
-  assume_role_policy = var.policy
+  assume_role_policy = var.assume_role_policy
 
 }

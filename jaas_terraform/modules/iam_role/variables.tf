@@ -40,7 +40,7 @@ variable "role_permissions_boundary_arn" {
   default     = ""
 }
 
-variable "policy" {
+variable "assume_role_policy" {
   description = "The path of the policy in IAM (tpl file)"
   type        = string
   default     = ""
