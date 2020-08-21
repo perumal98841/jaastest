@@ -2,7 +2,7 @@ module "jaas_iam_role_master" {
   source = "../../modules/iam_role"
 
 
-  role_name = "jaas_master_role"
+  role_name = "jaas-master-role"
 
   assume_role_policy = <<-EOF
   {
