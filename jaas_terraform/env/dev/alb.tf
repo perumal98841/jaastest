@@ -47,8 +47,8 @@ module "jaas_dev_alb" {
       deregistration_delay = 10
       health_check = {
         enabled             = true
-        interval            = 30
-        path                = "/"
+        interval            = 60
+        path                = "/favicon.ico"
         port                = "traffic-port"
         healthy_threshold   = 3
         unhealthy_threshold = 3
