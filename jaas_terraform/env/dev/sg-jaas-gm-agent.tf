@@ -1,9 +1,9 @@
-module "sg_jaas_bastion" {
+module "sg_gm-agent" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
     name = "jaas-dev-sg-gm-agent"
     vpc_id = module.jaas_dev_vpc.vpc_id
-    description = "Security Group for JaaS Bastion, managed by Terraform"
+    description = "Security Group for Grand Master Jenkins Agent, managed by Terraform"
     ingress_with_cidr_blocks = [
     {
       rule        = "http-80-tcp"
@@ -28,7 +28,7 @@ module "sg_jaas_bastion" {
     }
     technical_tags = {
         Env = "dev"
-        Product = "JaaS-Bastion"
+        Product = "GM-Agent"
         Terraform = "True"
     }
 }
