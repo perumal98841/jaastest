@@ -47,6 +47,7 @@ trilead-api:1.0.8
 resource-disposer:0.14
 display-url-api:2.3.3
 git:4.3.0
+jdk-tool:1.4
 pipeline-stage-tags-metadata:1.7.1
 git-client:3.3.2
 subversion:2.13.1
@@ -86,9 +87,6 @@ pipeline-stage-step:2.5
 matrix-auth:2.6.2
 okhttp-api:3.14.9
 pipeline-model-extensions:1.7.1
-ec2:1.51
-aws-secrets-manager-credentials-provider:0.3.3
-s3:0.11.5
 authentication-tokens:1.4
 docker-commons:1.17
 docker-workflow:1.24
