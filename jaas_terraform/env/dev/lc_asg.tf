@@ -1,3 +1,12 @@
+locals {
+  user_data = <<EOF
+#!/bin/bash
+echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
+docker pull 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas
+docker run -itd -p 80:8080 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas
+EOF
+}
+
 module "jaas_lc_asg" {
     source      = "../../modules/lc_asg"
     aws_region = "us-east-1"
@@ -16,6 +25,7 @@ module "jaas_lc_asg" {
   security_groups              = module.sg_jaas_master.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.jaas_iam_instance_profile.name
+  user_data_base64 = base64encode(local.user_data)
   # Auto scaling group
   asg_name                  = "jaas-dev-asg"
   vpc_zone_identifier       = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
