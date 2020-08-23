@@ -39,7 +39,7 @@ jenkins:
 unclassified:
   location:
     adminAddress: "jenkins@example.com"
-    url: "http://jenkins.example.com/"
+    url: "https://jenkins.dev.tools.hidcloud.com/"
 
 tool:
   git:

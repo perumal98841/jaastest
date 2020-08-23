@@ -1,18 +1,20 @@
 version: '3.7'
 
 services:
-  jenkins: 
-    build: 
-      context: ./dockermaster
-    ports: 
+  jenkins:
+    build:
+      context: .
+    ports:
       - 9090:8080
       - 50000:50000
     volumes:
       - jenkins_home:/var/jenkins_home
-      - ./casc_configs:/var/jenkins_conf
     secrets:
       - linux_agent_private_key
     environment:
-      - CASC_JENKINS_CONFIG=/var/jenkins_conf
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
+secrets:
+  linux_agent_private_key:
+    file: .secrets/linux_agent_private_key
 volumes:
   jenkins_home:
