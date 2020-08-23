@@ -15,6 +15,6 @@ services:
       - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
 secrets:
   linux_agent_private_key:
-    file: .secrets/linux_agent_private_key
+    file: secrets/linux_agent_private_key
 volumes:
   jenkins_home:
