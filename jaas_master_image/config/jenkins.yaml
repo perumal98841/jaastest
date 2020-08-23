@@ -15,11 +15,8 @@ jenkins:
 
   authorizationStrategy:
     globalMatrix:
-      grantedPermissions:
-        - "Overall/Read:anonymous"
-        - "Job/Read:anonymous"
-        - "View/Read:anonymous"
-        - "Overall/Administer:anonymous"
+      Permissions:
+        - "Overall/Administer:authenticated"
 
   crumbIssuer: "standard"
 
