@@ -74,7 +74,7 @@ module "jaas_iam_policy_master_ecr" {
 
 module "jaas_iam_policy_master_ec2" {
   source = "../../modules/iam_role_policy"
-  policy_name = "jaas-ecr-policy"
+  policy_name = "jaas-ec2-policy"
   policy = data.aws_iam_policy_document.ec2_policy.json
   role = module.jaas_iam_role_master.id
 }
