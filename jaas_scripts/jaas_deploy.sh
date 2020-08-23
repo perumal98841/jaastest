@@ -15,8 +15,8 @@ if [ "$Environment" == "DEV" ]; then
     mv terraform.tfstate.backup dev.terraform.tfstate.backup
     cp -f dev.terraform.tfstate ../jaas_destroy_note/.
     cp -f dev.terraform.tfstate.backup ../jaas_destroy_note/.
-    cp -f .terraform/modules/modules.json ../jaas_destroy_note/.terraform/modules/modules.json
-    #ls | grep -v dev.terraform.tfstate | grep -v prod.terraform.tfstate | xargs rm -Rf
+    cp -Rf .terraform ../jaas_destroy_note/.
+    ls | grep -v dev.terraform.tfstate | grep -v prod.terraform.tfstate | xargs rm -Rf
     echo "=========================="
     ls -ls
 
