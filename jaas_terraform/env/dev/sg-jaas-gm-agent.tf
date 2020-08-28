@@ -1,10 +1,10 @@
-data "aws_security_group" "bastion" {
+data "aws_security_group" "bastionserver" {
   name   = module.sg_jaas_bastion.this_security_group_name[0]
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
 
 
-module "sg_gm-agent" {
+module "sg-gm-agent" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
     name = "jaas-dev-sg-gm-agent"
@@ -34,28 +34,28 @@ module "sg_gm-agent" {
       to_port                  = 80
       protocol                 = 6
       description              = "HTTP"
-      source_security_group_id = data.aws_security_group.bastion.id
+      source_security_group_id = data.aws_security_group.bastionserver.id
     },
     {
       from_port                = 443
       to_port                  = 443
       protocol                 = 6
       description              = "HTTPS"
-      source_security_group_id = data.aws_security_group.bastion.id
+      source_security_group_id = data.aws_security_group.bastionserver.id
     },
     {
       from_port                = 22
       to_port                  = 22
       protocol                 = 6
       description              = "SSH"
-      source_security_group_id = data.aws_security_group.bastion.id
+      source_security_group_id = data.aws_security_group.bastionserver.id
     },
     {
       from_port                = 9090
       to_port                  = 9090
       protocol                 = 6
       description              = "Portainer"
-      source_security_group_id = data.aws_security_group.bastion.id
+      source_security_group_id = data.aws_security_group.bastionserver.id
     },
 
   ]
