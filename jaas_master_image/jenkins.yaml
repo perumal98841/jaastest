@@ -12,7 +12,7 @@
 #              privateKey: ${linux_agent_private_key}
 
 jenkins:
-  systemMessage: "Jenkins Configured using Code"
+  systemMessage: "HID Global - Jenkins"
 
   numExecutors: 1
   mode: NORMAL

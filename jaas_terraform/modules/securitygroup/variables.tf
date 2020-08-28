@@ -67,6 +67,27 @@ variable "ingress_with_cidr_blocks" {
   default     = []
 }
 
+variable "ingress_with_self" {
+  description = "List of ingress rules to create where 'self' is defined"
+  type        = list(map(string))
+  default     = []
+}
+
+variable "ingress_with_source_security_group_id" {
+  description = "List of ingress rules to create where 'source_security_group_id' is used"
+  type        = list(map(string))
+  default     = []
+}
+
+
+variable "ingress_prefix_list_ids" {
+  description = "List of prefix list IDs (for allowing access to VPC endpoints) to use on all ingress rules"
+  type        = list(string)
+  default     = []
+}
+
+
+
 variable "egress_rules" {
   description = "List of egress rules to create by name"
   type        = list(string)

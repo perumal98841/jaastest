@@ -6,14 +6,6 @@ module "sg_jaas_agent" {
     description = "Security Group for Jenkins-as-a-Service, managed by Terraform"
     ingress_with_cidr_blocks = [
     {
-      rule        = "http-80-tcp"
-      cidr_blocks = "0.0.0.0/0"
-    },
-    {
-      rule        = "https-443-tcp"
-      cidr_blocks = "0.0.0.0/0"
-    },
-    {
       rule        = "rdp-tcp"
       cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
     },
@@ -22,6 +14,18 @@ module "sg_jaas_agent" {
       cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
     },
   ]
+
+      ingress_with_source_security_group_id = [
+    {
+      rule                     = "ssh-tcp"
+      source_security_group_id = module.sg_jaas_master.this_security_group_id
+    },
+    {
+      rule                     = "ssh-tcp"
+      source_security_group_id = module.sg_jaas_bastion.this_security_group_id
+    },
+  ]
+
     egress_with_cidr_blocks = [
     {
       rule        = "all-all"

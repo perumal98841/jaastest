@@ -13,6 +13,7 @@ variable "rules" {
     rdp-tcp = [3389, 3389, "tcp", "Remote Desktop"]
     # SSH
     ssh-tcp = [22, 22, "tcp", "SSH"]
+
     # Open all ports & protocols
     all-all       = [-1, -1, "-1", "All protocols"]
     all-tcp       = [0, 65535, "tcp", "All TCP ports"]
