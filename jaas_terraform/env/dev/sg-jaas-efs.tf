@@ -1,17 +1,21 @@
+data "aws_security_group" "master" {
+  name   = module.sg_jaas_master.this_security_group_name[0]
+  vpc_id = module.jaas_dev_vpc.vpc_id
+}
+
 module "sg_jaas_efs" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
     name = "jaas-dev-sg-jaas-efs"
     vpc_id = module.jaas_dev_vpc.vpc_id
     description = "Security Group for EFS, managed by Terraform"
-    ingress_with_cidr_blocks = [
+    ingress_with_source_security_group_id = [
     {
-      rule        = "http-80-tcp"
-      cidr_blocks = "0.0.0.0/0"
-    },
-    {
-      rule        = "rdp-tcp"
-      cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
+      from_port                = 2049
+      to_port                  = 2049
+      protocol                 = 6
+      description              = "Service name"
+      source_security_group_id = data.aws_security_group.master.id
     },
   ]
     egress_with_cidr_blocks = [
