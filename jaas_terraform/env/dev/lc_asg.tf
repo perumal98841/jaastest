@@ -1,9 +1,11 @@
 locals {
   user_data = <<EOF
 #!/bin/bash
+echo "$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone).fs-dd489c5f.efs.us-east-1.amazonaws.com:/ /efs-volume nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
+mount -a -t nfs4
 echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
-docker pull 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.1
-docker run -itd -p 80:8080 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.1
+docker pull 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.3
+docker run -itd -p 80:8080 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.3
 /opt/nessus_agent/sbin/nessuscli agent link --host=cloud.tenable.com --port=443 --key=bbdb8add4bb0e8f8491c356ab0758ea8eb52c88d9c1102fa72166a83bb7a2ac6 --groups=JaaS-DEV,AWS,HIDG 
 EOF
 }

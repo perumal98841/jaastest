@@ -20,6 +20,8 @@ module "jaas_dev_vpc" {
     name = "jaas-dev"
     vpcname ="jaas-dev-vpc"
     cidr    = "10.8.24.0/24"
+    enable_dns_hostnames             = true
+    enable_dns_support               = true
     azs = ["us-east-1a","us-east-1b"]
     public_subnets = ["10.8.24.0/28","10.8.24.16/28"]
     private_subnets = ["10.8.24.32/28","10.8.24.48/28","10.8.24.96/27","10.8.24.128/27","10.8.24.160/28","10.8.24.176/28"]
