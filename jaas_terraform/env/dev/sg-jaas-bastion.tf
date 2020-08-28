@@ -7,7 +7,7 @@ module "sg_jaas_bastion" {
     ingress_with_cidr_blocks = [
     {
       rule        = "rdp-tcp"
-      cidr_blocks = "45.251.35.168/32"
+      cidr_blocks = "45.251.35.251/32"
     },
   ]
     egress_with_cidr_blocks = [
