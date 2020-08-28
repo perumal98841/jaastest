@@ -9,12 +9,12 @@ services:
       - 50000:50000
     volumes:
       - jenkins_home:/var/jenkins_home
-    secrets:
-      - linux_agent_private_key
-    environment:
-      - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
-secrets:
-  linux_agent_private_key:
-    file: secrets/linux_agent_private_key
+#    secrets:
+#      - linux_agent_private_key
+#    environment:
+#      - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
+#secrets:
+#  linux_agent_private_key:
+#    file: secrets/linux_agent_private_key
 volumes:
   jenkins_home:
