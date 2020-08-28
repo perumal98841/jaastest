@@ -3,7 +3,7 @@ locals {
 #!/bin/bash
 echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
 docker pull 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas
-docker run -itd -p 80:8080 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas
+docker run -itd -p 80:8080 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.1
 EOF
 }
 
