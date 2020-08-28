@@ -11,12 +11,7 @@ module "sg-gm-agent" {
     vpc_id = module.jaas_dev_vpc.vpc_id
     description = "Security Group for Grand Master Jenkins Agent, managed by Terraform"
 
-    ingress_rules = [
-      from_port = 9090
-      to_port = 9090
-      protocol = 6
-      description = "Portainer"
-    ]
+
     ingress_with_cidr_blocks = [
     {
       rule        = "http-80-tcp"
@@ -26,6 +21,13 @@ module "sg-gm-agent" {
       rule        = "ssh-tcp"
       cidr_blocks = "45.251.35.251/32"
     },
+    {
+      from_port   = 9090
+      to_port     = 9090
+      protocol    = "tcp"
+      description = "Portainer"
+      cidr_blocks = "45.251.35.251/32"
+    },    
   ]
 
    ingress_with_source_security_group_id = [
