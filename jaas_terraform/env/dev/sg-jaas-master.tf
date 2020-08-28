@@ -1,3 +1,15 @@
+data "aws_security_group" "alb" {
+  name   = module.sg_jaas_alb.this_security_group_name[0]
+  vpc_id = module.jaas_dev_vpc.vpc_id
+}
+
+data "aws_security_group" "bastion" {
+  name   = module.sg_jaas_bastion.this_security_group_name[0]
+  vpc_id = module.jaas_dev_vpc.vpc_id
+}
+
+
+
 module "sg_jaas_master" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
@@ -11,21 +23,30 @@ module "sg_jaas_master" {
     },
   ]
 
-    ingress_with_source_security_group_id = [
+      ingress_with_source_security_group_id = [
     {
-      rule                     = "http-80-tcp"
-      source_security_group_id = module.sg_jaas_alb.this_security_group_id
+      from_port                = 80
+      to_port                  = 80
+      protocol                 = 6
+      description              = "Service name"
+      source_security_group_id = data.aws_security_group.alb.id
     },
     {
-      rule                     = "http-443-tcp"
-      source_security_group_id = module.sg_jaas_alb.this_security_group_id
+      from_port                = 443
+      to_port                  = 443
+      protocol                 = 6
+      description              = "Service name"
+      source_security_group_id = data.aws_security_group.alb.id
     },
     {
-      rule                     = "ssh-tcp"
-      source_security_group_id = module.sg_jaas_bastion.this_security_group_id
+      from_port                = 22
+      to_port                  = 22
+      protocol                 = 6
+      description              = "Service name"
+      source_security_group_id = data.aws_security_group.bastion.id
     },
-
   ]
+
 
     egress_with_cidr_blocks = [
     {
