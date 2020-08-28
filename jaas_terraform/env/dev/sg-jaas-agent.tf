@@ -3,6 +3,12 @@ data "aws_security_group" "master" {
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
 
+data "aws_security_group" "bastionagent" {
+  name   = module.sg_jaas_bastion.this_security_group_name[0]
+  vpc_id = module.jaas_dev_vpc.vpc_id
+}
+
+
 module "sg_jaas_agent" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
@@ -35,6 +41,13 @@ module "sg_jaas_agent" {
       description              = "Service name"
       source_security_group_id = data.aws_security_group.master.id
     },
+    {
+      from_port                = 22
+      to_port                  = 22
+      protocol                 = 6
+      description              = "Service name"
+      source_security_group_id = data.aws_security_group.bastionagent.id
+    },    
   ]
 
     egress_with_cidr_blocks = [
