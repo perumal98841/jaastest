@@ -1,59 +1,56 @@
-data "aws_security_group" "master" {
+data "aws_security_group" "master_windows" {
   name   = module.sg_jaas_master.this_security_group_name[0]
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
 
-data "aws_security_group" "bastionagent" {
+data "aws_security_group" "bastion_windows" {
   name   = module.sg_jaas_bastion.this_security_group_name[0]
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
 
 
-module "sg_jaas_agent" {
+module "sg_jaas_agent_windows" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
-    name = "jaas-dev-sg-jaas-agent"
+    name = "jaas-dev-sg-jaas-agent-windows"
     vpc_id = module.jaas_dev_vpc.vpc_id
-    description = "Security Group for Jenkins-as-a-Service, managed by Terraform"
-    ingress_with_cidr_blocks = [
+    description = "Security Group for Windows Agent, managed by Terraform"
+    ingress_with_source_security_group_id = [
     {
-      rule        = "rdp-tcp"
-      cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
-    },
-    {
-      rule        = "ssh-tcp"
-      cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
-    },
-  ]
-
-      ingress_with_source_security_group_id = [
-    {
-      from_port                = 22
-      to_port                  = 22
+      from_port                = 445
+      to_port                  = 445
       protocol                 = 6
-      description              = "SSH"
-      source_security_group_id = data.aws_security_group.master.id
+      description              = "Jenkins-Windows-Agent"
+      source_security_group_id = data.aws_security_group.master_windows.id
     },
     {
       from_port                = 50000
       to_port                  = 50000
       protocol                 = 6
       description              = "JNLP"
-      source_security_group_id = data.aws_security_group.master.id
+      source_security_group_id = data.aws_security_group.master_windows.id
     },
     {
-      from_port                = 22
-      to_port                  = 22
+      from_port                = 5985
+      to_port                  = 5985
       protocol                 = 6
-      description              = "SSH"
-      source_security_group_id = data.aws_security_group.bastionagent.id
+      description              = "Jenkins-Windows-Agent"
+      source_security_group_id = data.aws_security_group.master_windows.id
     },    
+    {
+      from_port                = 5986
+      to_port                  = 5986
+      protocol                 = 6
+      description              = "Jenkins-Windows-Agent"
+      source_security_group_id = data.aws_security_group.master_windows.id
+    },    
+
     {
       from_port                = 3389
       to_port                  = 3389
       protocol                 = 6
       description              = "RDP"
-      source_security_group_id = data.aws_security_group.bastionagent.id
+      source_security_group_id = data.aws_security_group.bastion_windows.id
     },  
   ]
 

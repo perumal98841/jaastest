@@ -1,4 +1,4 @@
-data "aws_security_group" "master-jenkins" {
+data "aws_security_group" "master_jenkins" {
   name   = module.sg_jaas_master.this_security_group_name[0]
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
@@ -15,7 +15,7 @@ module "sg_jaas_efs" {
       to_port                  = 2049
       protocol                 = 6
       description              = "Service name"
-      source_security_group_id = data.aws_security_group.master-jenkins.id
+      source_security_group_id = data.aws_security_group.master_jenkins.id
     },
   ]
     egress_with_cidr_blocks = [
