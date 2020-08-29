@@ -59,7 +59,7 @@ module "jaas_dev_alb" {
       stickiness = {
         enabled         = true
         cookie_duration = 60
-        type            = lb_cookie
+        type            = "lb_cookie"
     }      
       tags = {
         InstanceTargetGroupTag = "baz"

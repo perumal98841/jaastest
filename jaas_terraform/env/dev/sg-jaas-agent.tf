@@ -31,23 +31,30 @@ module "sg_jaas_agent" {
       from_port                = 22
       to_port                  = 22
       protocol                 = 6
-      description              = "Service name"
+      description              = "SSH"
       source_security_group_id = data.aws_security_group.master.id
     },
     {
       from_port                = 50000
       to_port                  = 50000
       protocol                 = 6
-      description              = "Service name"
+      description              = "JNLP"
       source_security_group_id = data.aws_security_group.master.id
     },
     {
       from_port                = 22
       to_port                  = 22
       protocol                 = 6
-      description              = "Service name"
+      description              = "SSH"
       source_security_group_id = data.aws_security_group.bastionagent.id
     },    
+    {
+      from_port                = 3389
+      to_port                  = 3389
+      protocol                 = 6
+      description              = "RDP"
+      source_security_group_id = data.aws_security_group.bastionagent.id
+    },  
   ]
 
     egress_with_cidr_blocks = [
