@@ -56,6 +56,11 @@ module "jaas_dev_alb" {
         protocol            = "HTTP"
         matcher             = "200-399"
       }
+      stickiness = {
+        enabled         = true
+        cookie_duration = 60
+        type            = lb_cookie
+    }      
       tags = {
         InstanceTargetGroupTag = "baz"
       }
