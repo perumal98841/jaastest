@@ -17,4 +17,5 @@ module "ECS_jaas_ecs" {
     
     volume_name = "jenkins-storage"
     file_system_id          = module.ECS_jaas_efs.id
+    platform_version = "1.4.0"
 }

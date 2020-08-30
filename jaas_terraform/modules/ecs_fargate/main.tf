@@ -53,6 +53,7 @@ resource "aws_ecs_cluster" "fargate" {
 }
 
 resource "aws_ecs_service" "fargate" {
+  platform_version = var.platform_version
   depends_on = [aws_ecs_task_definition.fargate]
   name                               = "${var.env_name}-${var.app_name}-service"
   cluster                            = aws_ecs_cluster.fargate.id

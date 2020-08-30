@@ -103,3 +103,8 @@ variable "file_system_id" {
   description = "EFS File System ID"
 }
 
+variable "platform_version" {
+  type        = string
+  description = "The platform version on which to run your service"
+}
+
