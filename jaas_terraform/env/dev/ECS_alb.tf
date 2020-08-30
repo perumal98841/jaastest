@@ -13,7 +13,7 @@ module "ECS_jaas_dev_alb" {
     vpc_id = module.jaas_dev_vpc.vpc_id
     internal = true
   security_groups              = module.sg_jaas_alb.this_security_group_id
-  subnets         = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
+  subnets         = [module.jaas_dev_vpc.private_subnets[2],module.jaas_dev_vpc.private_subnets[3]]
 
   http_tcp_listeners = [
     # Forward action is default, either when defined or undefined
