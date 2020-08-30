@@ -92,3 +92,14 @@ variable "container_port" {
   type        = number
   description = "Container port for the container"
 }
+
+variable "volume_name" {
+  type        = string
+  description = "Volume Name."
+}
+
+variable "file_system_id" {
+  type        = string
+  description = "EFS File System ID"
+}
+

@@ -34,6 +34,13 @@ resource "aws_ecs_task_definition" "fargate" {
   task_role_arn            = var.task_role_arn
 
   container_definitions = jsonencode(local.ecs_container_definitions)
+    volume {
+    name = var.volume_name
+
+    efs_volume_configuration {
+      file_system_id          = var.file_system_id
+    }
+  }
 }
 
 resource "aws_ecs_cluster" "fargate" {
