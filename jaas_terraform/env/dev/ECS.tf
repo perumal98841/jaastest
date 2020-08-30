@@ -14,4 +14,12 @@ module "ECS_jaas_ecs" {
     target_group_arn = module.ECS_jaas_dev_alb.target_group_arns[0]
     task_role_arn = module.jaas_iam_role_master.arn
     execution_role_arn = module.jaas_iam_role_master.arn
+    volume {
+    name = "jenkins-storage"
+
+    efs_volume_configuration {
+      file_system_id          = module.ECS_jaas_efs.id
+      root_directory          = "/"
+    }
+  }
 }
