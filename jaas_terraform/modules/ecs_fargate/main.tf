@@ -14,7 +14,7 @@ locals {
       mountPoints = [
                 {
                     sourceVolume = var.volume_name,
-                    containerPath = "/var/jenkins_home"
+                    containerPath = var.containerPath
                 }
             ]
 
@@ -45,6 +45,7 @@ resource "aws_ecs_task_definition" "fargate" {
 
     efs_volume_configuration {
       file_system_id          = var.file_system_id
+      root_directory          = var.root_directory
     }
   }
 }

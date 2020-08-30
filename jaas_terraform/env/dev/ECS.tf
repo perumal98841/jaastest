@@ -16,6 +16,8 @@ module "ECS_jaas_ecs" {
     execution_role_arn = module.jaas_iam_role_master.arn
     
     volume_name = "jenkins-storage"
+    containerPath = "/var/jenkins_home"
     file_system_id          = module.ECS_jaas_efs.id
+    root_directory          = "/var"
     platform_version = "1.4.0"
 }

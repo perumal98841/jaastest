@@ -108,3 +108,12 @@ variable "platform_version" {
   description = "The platform version on which to run your service"
 }
 
+variable "root_directory" {
+  type        = string
+  description = "The directory within the Amazon EFS file system to mount as the root directory inside the host"
+}
+
+variable "containerPath" {
+  type        = string
+  description = "The directory within the Amazon EFS file system to mount as the root directory inside the host"
+}
