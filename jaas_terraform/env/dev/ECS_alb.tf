@@ -42,8 +42,8 @@ module "ECS_jaas_dev_alb" {
     {
       name_prefix          = "ECS"
       backend_protocol     = "HTTP"
-      backend_port         = 80
-      target_type          = "instance"
+      backend_port         = 8080
+      target_type          = "ip"
       deregistration_delay = 10
       health_check = {
         enabled             = true
