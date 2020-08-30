@@ -11,6 +11,12 @@ locals {
           hostPort      = var.container_port
         }
       ]
+      mountPoints = [
+                {
+                    sourceVolume = var.volume_name,
+                    containerPath = "/var/jenkins_home"
+                }
+            ]
 
 #      logConfiguration = {
 #        logDriver = "awslogs",
