@@ -6,7 +6,7 @@ resource "random_pet" "EC2_this" {
 module "EC2_jaas_dev_alb" {
     source      = "../../modules/alb"
 
-  name = "EC2-jaas-dev-alb-${random_pet.this.id}"
+  name = "EC2-jaas-dev-alb-${random_pet.EC2_this.id}"
 
   load_balancer_type = "application"
 
@@ -20,19 +20,23 @@ module "EC2_jaas_dev_alb" {
     {
       port        = 80
       protocol    = "HTTP"
-#      action_type = "redirect"
-      target_group_index = 0
+      action_type = "redirect"
+      redirect = {
+        port        = "443"
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
     },
   ]
 
-#  https_listeners = [
-#    {
-#      port               = 443
-#      protocol           = "HTTPS"
-#      certificate_arn    = "arn:aws:acm:us-east-1:187945997467:certificate/954a2440-c467-481e-b3bc-5c2622f279b5"
-#      target_group_index = 0
-#    },
-#  ]
+  https_listeners = [
+    {
+      port               = 443
+      protocol           = "HTTPS"
+      certificate_arn    = "arn:aws:acm:us-east-1:187945997467:certificate/d7a6f6ce-61cf-4b49-95b5-5894dc776e47"
+      target_group_index = 0
+    },
+  ]
 
   target_groups = [
     {

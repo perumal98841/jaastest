@@ -28,7 +28,7 @@ module "EC2_jaas_lc_asg" {
   security_groups              = module.sg_jaas_master.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.jaas_iam_instance_profile.name
-  #user_data_base64 = base64encode(local.user_data)
+  #user_data_base64 = base64encode(local.EC2_user_data)
   # Auto scaling group
   asg_name                  = "EC2-jaas-dev-asg"
   vpc_zone_identifier       = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
