@@ -1,5 +1,5 @@
 locals {
-  user_data = <<EOF
+  EC2_user_data = <<EOF
 #!/bin/bash
 echo "$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone).fs-dd489c5f.efs.us-east-1.amazonaws.com:/ /efs-volume nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
 mount -a -t nfs4

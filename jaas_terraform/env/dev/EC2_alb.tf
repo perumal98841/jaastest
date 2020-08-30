@@ -1,4 +1,4 @@
-resource "random_pet" "this" {
+resource "random_pet" "EC2_this" {
   length = 2
 }
 
