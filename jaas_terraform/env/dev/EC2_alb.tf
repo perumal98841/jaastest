@@ -42,7 +42,7 @@ module "EC2_jaas_dev_alb" {
     {
       name_prefix          = "EC2"
       backend_protocol     = "HTTP"
-      backend_port         = 80
+      backend_port         = 8080
       target_type          = "instance"
       deregistration_delay = 10
       health_check = {

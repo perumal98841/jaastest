@@ -2,7 +2,7 @@ module "jaas_dev_bastion" {
     source      = "../../modules/ec2"
 
     instance_count = 1
-    name          = "JaaS-DEV-Bastion"
+    name          = "perumal-JaaS-DEV-Bastion"
   ami           = "ami-0f1319c917f187ba6"
   instance_type = "t3a.small"
   subnet_id     = tolist(module.jaas_dev_vpc.public_subnets)[0]
