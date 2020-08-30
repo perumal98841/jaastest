@@ -1,4 +1,4 @@
-module "EC2_records" {
+module "ECS_records" {
     source      = "../../modules/route53_record"
 
   zone_id = "Z000275123DCSJ4HQ0KOY"
@@ -8,7 +8,7 @@ module "EC2_records" {
       name = "ecsjenkins"
       type = "CNAME"
       ttl  = 3600
-      records = ["${module.EC2_jaas_dev_alb.this_lb_dns_name}"]
+      records = ["${module.ECS_jaas_dev_alb.this_lb_dns_name}"]
     },
   ]
 }
