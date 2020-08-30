@@ -19,7 +19,7 @@ module "EC2_jaas_lc_asg" {
   # create_lc = false # disables creation of launch configuration
   lc_name = "EC2-jaas-dev-lc"
 
-  image_id                     = "ami-045641ada9f1b5a4e"
+  image_id                     = "ami-07115dd77b35f0db5"
   instance_type                = "t3a.small"
   key_name                     = module.keypair_master.this_key_pair_key_name
   security_groups              = module.sg_jaas_master.this_security_group_id
