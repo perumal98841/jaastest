@@ -1,5 +1,3 @@
-ECS_alb.tf
-
 resource "random_pet" "ECS_this" {
   length = 2
 }
