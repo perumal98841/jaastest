@@ -20,8 +20,6 @@ locals {
 #          awslogs-stream-prefix = "ecs"
 #        }
 #      }
-
-      environment = var.environment
     }
   ]
 }
@@ -67,11 +65,9 @@ resource "aws_ecs_service" "fargate" {
     subnets          = var.subnets
   }
 
-  dynamic "load_balancer" {
-    content {
+  load_balancer {
       target_group_arn = var.target_group_arn
       container_name   = "${var.env_name}-${var.app_name}"
       container_port   = var.container_port
-    }
   }
 }

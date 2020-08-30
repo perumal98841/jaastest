@@ -38,11 +38,13 @@ variable "ram_units" {
 variable "execution_role_arn" {
   type        = string
   description = "The Amazon Resource Name (ARN) of the task execution role that the Amazon ECS container agent and the Docker daemon can assume"
+  default = ""
 }
 
 variable "task_role_arn" {
   type        = string
   description = "The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services"
+    default = ""
 }
 
 variable "capacity_provider" {
@@ -85,4 +87,9 @@ variable "target_group_arn" {
   type        = string
   description = "The ARN of the Load Balancer target group to associate with the service."
   default     = ""
+}
+
+variable "container_port" {
+  type        = number
+  description = "Container port for the container"
 }
