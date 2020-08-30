@@ -11,5 +11,5 @@ module "ECS_jaas_ecs" {
     ram_units         = 512
     task_group_family = "dev-jaas-task-definition"
     container_port    = 80
-    target_group_arn = module.ECS_jaas_dev_alb.target_group_arn
+    target_group_arn = module.ECS_jaas_dev_alb.target_group_arns
 }

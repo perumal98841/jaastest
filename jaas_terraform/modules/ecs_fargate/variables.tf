@@ -86,7 +86,6 @@ variable "subnets" {
 variable "target_group_arn" {
   type        = string
   description = "The ARN of the Load Balancer target group to associate with the service."
-  default     = ""
 }
 
 variable "container_port" {
