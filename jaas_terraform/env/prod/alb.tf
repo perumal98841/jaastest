@@ -13,7 +13,7 @@ module "jaas_prod_alb" {
     vpc_id = module.jaas_prod_vpc.vpc_id
     internal = true
   security_groups              = module.sg_jaas_alb.this_security_group_id
-  subnets         = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
+  subnets         = [module.jaas_prod_vpc.private_subnets[0],module.jaas_prod_vpc.private_subnets[1]]
 
   http_tcp_listeners = [
     # Forward action is default, either when defined or undefined
@@ -33,7 +33,7 @@ module "jaas_prod_alb" {
     {
       port               = 443
       protocol           = "HTTPS"
-      certificate_arn    = "arn:aws:acm:us-east-1:187945997467:certificate/954a2440-c467-481e-b3bc-5c2622f279b5"
+      certificate_arn    = "arn:aws:acm:us-east-1:152429829684:certificate/aba21481-8efc-42f8-b3f6-030ebbf5cc52"
       target_group_index = 0
     },
   ]

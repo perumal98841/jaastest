@@ -1,13 +1,13 @@
-module "jaas_dev_bastion_dev" {
+module "jaas_prod_bastion_prod" {
     source      = "../../modules/ec2"
 
     instance_count = 0
-    name          = "JaaS-DEV-Bastion"
+    name          = "JaaS-PROD-Bastion"
   ami           = "ami-0f1319c917f187ba6"
   instance_type = "t3a.small"
-  subnet_id     = tolist(module.jaas_dev_vpc.private_subnets)[1]
+  subnet_id     = tolist(module.jaas_prod_vpc.private_subnets)[1]
   private_ips                 = ["10.8.24.62"]
-  vpc_security_group_ids      =   module.sg_jaas_bastion_dev.this_security_group_id
+  vpc_security_group_ids      =   module.sg_jaas_bastion_prod.this_security_group_id
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
@@ -15,7 +15,7 @@ module "jaas_dev_bastion_dev" {
         Email = "perumal.varadharajulu@hidglobal.com"
     }
     technical_tags = {
-        Env = "dev"
+        Env = "prod"
         Product = "JaaS-Bastion"
         Terraform = "True"
     }  

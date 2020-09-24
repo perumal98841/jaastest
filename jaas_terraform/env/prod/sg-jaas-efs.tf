@@ -7,7 +7,7 @@ module "sg_jaas_efs" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
     name = "jaas-prod-sg-jaas-efs"
-    vpc_id = module.jaas_dev_vpc.vpc_id
+    vpc_id = module.jaas_prod_vpc.vpc_id
     description = "Security Group for EFS, managed by Terraform"
     ingress_with_source_security_group_id = [
     {

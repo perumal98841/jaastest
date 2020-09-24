@@ -4,7 +4,7 @@ data "aws_security_group" "alb" {
 }
 
 data "aws_security_group" "bastion" {
-  name   = module.sg_jaas_bastion.this_security_group_name[0]
+  name   = module.sg_jaas_bastion_prod.this_security_group_name[0]
   vpc_id = module.jaas_prod_vpc.vpc_id
 }
 

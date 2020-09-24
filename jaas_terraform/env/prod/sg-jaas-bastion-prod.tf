@@ -2,7 +2,7 @@ module "sg_jaas_bastion_prod" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
     name = "jaas-prod-sg-jaas-bastion-prod"
-    vpc_id = module.jaas_dev_vpc.vpc_id
+    vpc_id = module.jaas_prod_vpc.vpc_id
     description = "Security Group for JaaS Bastion, managed by Terraform"
     ingress_with_cidr_blocks = [
     {
