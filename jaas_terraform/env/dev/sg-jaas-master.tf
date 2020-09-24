@@ -8,7 +8,10 @@ data "aws_security_group" "bastion" {
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
 
-
+data "aws_security_group" "bastion-dev" {
+  name   = module.sg_jaas_bastion_dev.this_security_group_name[0]
+  vpc_id = module.jaas_dev_vpc.vpc_id
+}
 
 module "sg_jaas_master" {
     source      = "../../modules/securitygroup"
@@ -53,6 +56,13 @@ module "sg_jaas_master" {
       description              = "SSH"
       source_security_group_id = data.aws_security_group.bastion.id
     },
+    {
+      from_port                = 22
+      to_port                  = 22
+      protocol                 = 6
+      description              = "SSH"
+      source_security_group_id = data.aws_security_group.bastion-dev.id
+    },    
   ]
 
 

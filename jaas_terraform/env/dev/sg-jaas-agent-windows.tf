@@ -8,6 +8,10 @@ data "aws_security_group" "bastion_windows" {
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
 
+data "aws_security_group" "bastion-dev" {
+  name   = module.sg_jaas_bastion_dev.this_security_group_name[0]
+  vpc_id = module.jaas_dev_vpc.vpc_id
+}
 
 module "sg_jaas_agent_windows" {
     source      = "../../modules/securitygroup"
@@ -51,7 +55,14 @@ module "sg_jaas_agent_windows" {
       protocol                 = 6
       description              = "RDP"
       source_security_group_id = data.aws_security_group.bastion_windows.id
-    },  
+    },
+    {
+      from_port                = 3389
+      to_port                  = 3389
+      protocol                 = 6
+      description              = "SSH"
+      source_security_group_id = data.aws_security_group.bastion-dev.id
+    },       
   ]
 
     egress_with_cidr_blocks = [
