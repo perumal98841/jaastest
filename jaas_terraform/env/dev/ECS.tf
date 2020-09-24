@@ -20,4 +20,5 @@ module "ECS_jaas_ecs" {
     file_system_id          = module.ECS_jaas_efs.id
     root_directory          = "/var"
     platform_version = "1.4.0"
+    desired_tasks = 0
 }
