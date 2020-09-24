@@ -1,0 +1,10 @@
+node('windows-agent') {
+    withCredentials([usernamePassword(credentialsId: 'ProductIT-DEVint-AccountKey', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+        powershell label: '', script: 'set AWS_ACCESS_KEY_ID=%AWS_ACCESS_KEY_ID%'
+        powershell label: '', script: 'set AWS_SECRET_ACCESS_KEY=%AWS_SECRET_ACCESS_KEY%'
+        powershell label: '', script: 'echo $AWS_ACCESS_KEY_ID'
+        powershell label: '', script: 'echo $AWS_SECRET_ACCESS_KEY'
+        powershell label: '', script: 'sleep 60'
+        powershell label: '', script: 'aws s3 ls'
+    }
+}
