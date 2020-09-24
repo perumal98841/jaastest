@@ -11,7 +11,6 @@ module "jaas_iam_role_master" {
       {
         "Action": "sts:AssumeRole",
         "Principal": {
-          "Service": "ecs-tasks.amazonaws.com",
           "Service": "ec2.amazonaws.com"          
         },
         "Effect": "Allow",
