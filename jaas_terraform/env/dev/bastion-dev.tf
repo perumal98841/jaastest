@@ -8,7 +8,6 @@ module "jaas_dev_bastion_dev" {
   subnet_id     = tolist(module.jaas_dev_vpc.private_subnets)[1]
   private_ips                 = ["10.8.24.62"]
   vpc_security_group_ids      =   module.sg_jaas_bastion_dev.this_security_group_id
-  associate_public_ip_address = true
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
