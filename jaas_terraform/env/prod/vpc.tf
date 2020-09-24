@@ -20,6 +20,8 @@ module "jaas_prod_vpc" {
     name = "jaas-prod"
     vpcname ="jaas-prod-vpc"
     cidr    = "10.8.25.0/24"
+    enable_dns_hostnames             = true
+    enable_dns_support               = true
     azs = ["us-east-1a","us-east-1b"]
     public_subnets = ["10.8.25.0/28","10.8.25.16/28"]
     private_subnets = ["10.8.25.32/28","10.8.25.48/28","10.8.25.96/27","10.8.25.128/27","10.8.25.160/28","10.8.25.176/28"]
