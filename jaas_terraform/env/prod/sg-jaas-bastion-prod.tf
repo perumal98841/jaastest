@@ -1,24 +1,12 @@
-module "jaas_prod_sg" {
+module "sg_jaas_bastion_prod" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
-    name = "jaas-prod-sg"
-    vpc_id = module.jaas_prod_vpc.vpc_id
-    description = "Security Group for Jenkins-as-a-Service, managed by Terraform"
+    name = "jaas-prod-sg-jaas-bastion-prod"
+    vpc_id = module.jaas_dev_vpc.vpc_id
+    description = "Security Group for JaaS Bastion, managed by Terraform"
     ingress_with_cidr_blocks = [
     {
-      rule        = "http-80-tcp"
-      cidr_blocks = "0.0.0.0/0"
-    },
-    {
-      rule        = "https-443-tcp"
-      cidr_blocks = "0.0.0.0/0"
-    },
-    {
       rule        = "rdp-tcp"
-      cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
-    },
-    {
-      rule        = "ssh-tcp"
       cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
     },
   ]
@@ -36,7 +24,7 @@ module "jaas_prod_sg" {
     }
     technical_tags = {
         Env = "prod"
-        Product = "Jenkins-as-a-Service"
+        Product = "JaaS-Bastion"
         Terraform = "True"
     }
 }
