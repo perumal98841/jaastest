@@ -56,7 +56,7 @@ variable "capacity_provider" {
 variable "desired_tasks" {
   type        = number
   description = "Desired number of tasks running"
-  default     = 1
+  default     = 0
 }
 
 variable "maxiumum_healthy_task_percent" {
