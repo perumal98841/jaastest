@@ -1,7 +1,7 @@
 module "records" {
     source      = "../../modules/route53_record"
 
-  zone_id = "Z000275123DCSJ4HQ0KOY"
+  zone_id = "Z002405022GDTV5588PWC"
 
   records = [
      {
