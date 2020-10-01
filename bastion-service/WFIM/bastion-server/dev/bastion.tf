@@ -1,14 +1,14 @@
-module "jaas_dev_bastion" {
-    source      = "../../modules/ec2"
+module "wfim_dev_bastion" {
+    source      = "../../g-modules/ec2"
 
     instance_count = 1
     name          = "WFID-DEV-Bastion"
   ami           = "ami-0f1319c917f187ba6"
   instance_type = "t3a.small"
-  subnet_id     = tolist(module.jaas_dev_vpc.public_subnets)[0]
-  private_ips                 = ["10.8.24.14"]
-  vpc_security_group_ids      =   module.sg_jaas_bastion.this_security_group_id
-  associate_public_ip_address = true
+  subnet_id     = "subnet-016261286aa428875"
+  private_ips                 = ["10.7.203.82"]
+  vpc_security_group_ids      =   module.sg_wfim_bastion_dev.this_security_group_id
+  associate_public_ip_address = false
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
