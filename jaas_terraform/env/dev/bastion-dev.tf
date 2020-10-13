@@ -3,7 +3,7 @@ module "jaas_dev_bastion_dev" {
 
     instance_count = 1
     name          = "JaaS-DEV-Bastion"
-  ami           = "ami-0b2167b54542079bc"
+  ami           = "ami-02404348e17201e00"
   instance_type = "t3a.small"
   subnet_id     = tolist(module.jaas_dev_vpc.private_subnets)[1]
   private_ips                 = ["10.8.24.50"]
