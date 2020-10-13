@@ -1,5 +1,5 @@
 data "aws_security_group" "bastionserver" {
-  name   = module.sg_jaas_bastion.this_security_group_name[0]
+  name   = module.sg_jaas_bastion_dev.this_security_group_name[0]
   vpc_id = module.jaas_dev_vpc.vpc_id
 }
 
