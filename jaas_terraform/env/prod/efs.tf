@@ -5,7 +5,7 @@ module "jaas_efs" {
   vpc_id             = module.jaas_prod_vpc.vpc_id
   subnets            = [module.jaas_prod_vpc.private_subnets[0],module.jaas_prod_vpc.private_subnets[1]]
   security_groups    = module.sg_jaas_efs.this_security_group_id
-
+  encrypted = "true"
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
