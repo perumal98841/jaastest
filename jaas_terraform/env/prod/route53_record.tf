@@ -2,7 +2,7 @@ module "records" {
     source      = "../../modules/route53_record"
 
   zone_id = "Z002405022GDTV5588PWC"
-
+  create = "false"
   records = [
      {
       name = "jenkins"
