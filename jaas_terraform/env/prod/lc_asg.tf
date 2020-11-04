@@ -33,9 +33,9 @@ module "jaas_lc_asg" {
   asg_name                  = "jaas-prod-asg"
   vpc_zone_identifier       = [module.jaas_prod_vpc.private_subnets[0],module.jaas_prod_vpc.private_subnets[1]]
   health_check_type         = "EC2"
-  min_size                  = 1
-  max_size                  = 1
-  desired_capacity          = 1
+  min_size                  = 0
+  max_size                  = 0
+  desired_capacity          = 0
   wait_for_capacity_timeout = 0
   target_group_arns = module.jaas_prod_alb.target_group_arns
     business_tags = {
