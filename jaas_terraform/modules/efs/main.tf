@@ -16,8 +16,10 @@ resource "aws_efs_file_system" "default" {
       transition_to_ia = var.transition_to_ia
     }
   }
-    tags = merge(
-    "Name" = var.name,
+  tags = merge(
+    {
+      "Name" = format("%s", var.name)
+    },
     var.business_tags,
     var.technical_tags,
   )
