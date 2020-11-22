@@ -1,6 +1,6 @@
 module "jaas_efs" {
     source      = "../../modules/efs"
-  name               = "JaaS-EFS"
+  name               = "JaaS-PROD-EFS"
   aws_region             = "us-east-1"
   vpc_id             = module.jaas_prod_vpc.vpc_id
   subnets            = [module.jaas_prod_vpc.private_subnets[0],module.jaas_prod_vpc.private_subnets[1]]
