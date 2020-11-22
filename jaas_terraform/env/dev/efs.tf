@@ -17,4 +17,7 @@ module "jaas_efs" {
         Product = "JaaS-Bastion"
         Terraform = "True"
     }  
+    tags = {
+    Name = "JaaS-EFS-DEV"
+  }
 }
