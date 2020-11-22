@@ -16,6 +16,11 @@ resource "aws_efs_file_system" "default" {
       transition_to_ia = var.transition_to_ia
     }
   }
+    tags = merge(
+    "Name" = var.name,
+    var.business_tags,
+    var.technical_tags,
+  )
 }
 
 resource "aws_efs_mount_target" "default" {

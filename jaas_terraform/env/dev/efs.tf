@@ -1,6 +1,6 @@
 module "jaas_efs" {
     source      = "../../modules/efs"
-  name               = "JaaS-EFS"
+  name               = "JaaS-DEV-EFS"
   aws_region             = "us-east-1"
   vpc_id             = module.jaas_dev_vpc.vpc_id
   subnets            = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
@@ -17,7 +17,4 @@ module "jaas_efs" {
         Product = "JaaS-Bastion"
         Terraform = "True"
     }  
-    tags = {
-    Name = "JaaS-EFS-DEV"
-  }
 }
