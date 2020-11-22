@@ -20,6 +20,7 @@ resource "aws_lb" "this" {
     content {
       subnet_id     = subnet_mapping.value.subnet_id
       allocation_id = lookup(subnet_mapping.value, "allocation_id", null)
+      private_ipv4_address = lookup(subnet_mapping.value, "private_ipv4_address", null)
     }
   }
 
