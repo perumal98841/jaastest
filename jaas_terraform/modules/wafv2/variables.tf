@@ -35,6 +35,7 @@ variable "rules" {
 
 variable "ip_set_rules" {
   description = "List of WAF ip set rules to detect web requests coming from particular IP addresses or address ranges."
+  type        = list(string)
   default     = []
 }
 
