@@ -29,6 +29,7 @@ variable "tags" {
 
 variable "rules" {
   description = "List of WAF rules."
+  type        = list(string)
   default     = []
 }
 
