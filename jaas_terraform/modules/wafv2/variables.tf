@@ -61,3 +61,14 @@ variable "visibility_config" {
   type        = map(string)
   default     = {}
 }
+
+variable "business_tags" {
+    description   =   "Additional tags for the VPC"
+    type          =   map(string)
+    default       =   {}
+}
+variable "technical_tags" {
+    description   =   "Additional tags for the VPC"
+    type          =   map(string)
+    default       =   {}
+}

@@ -107,7 +107,13 @@ resource "aws_wafv2_web_acl" "main" {
     }
   }
 
-  tags = var.tags
+   tags = merge(
+    {
+      "Name" = format("%s_igw", var.name_prefix)
+    },
+    var.business_tags,
+    var.technical_tags,
+  )
 
   dynamic "visibility_config" {
     for_each = length(var.visibility_config) == 0 ? [] : [var.visibility_config]
