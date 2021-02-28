@@ -109,7 +109,7 @@ resource "aws_wafv2_web_acl" "main" {
 
    tags = merge(
     {
-      "Name" = format("%s_igw", var.name_prefix)
+      "Name" = format("%s_webacl", var.name_prefix)
     },
     var.business_tags,
     var.technical_tags,
