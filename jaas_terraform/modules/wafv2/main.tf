@@ -3,7 +3,6 @@
 #####
 resource "aws_wafv2_web_acl" "main" {
   count = var.enabled ? 1 : 0
-
   name  = var.name_prefix
   scope = var.scope
 
@@ -108,53 +107,6 @@ resource "aws_wafv2_web_acl" "main" {
     }
   }
 
-  dynamic "rule" {
-    for_each = var.ip_rate_based_rule != null ? [var.ip_rate_based_rule] : []
-    content {
-      name     = lookup(rule.value, "name")
-      priority = lookup(rule.value, "priority")
-
-      action {
-        dynamic "count" {
-          for_each = lookup(rule.value, "action", {}) == "count" ? [1] : []
-          content {}
-        }
-
-        dynamic "block" {
-          for_each = length(lookup(rule.value, "action", {})) == 0 || lookup(rule.value, "action", {}) == "block" ? [1] : []
-          content {}
-        }
-      }
-
-      statement {
-        dynamic "rate_based_statement" {
-          for_each = length(lookup(rule.value, "rate_based_statement", {})) == 0 ? [] : [lookup(rule.value, "rate_based_statement", {})]
-          content {
-            limit              = lookup(rate_based_statement.value, "limit")
-            aggregate_key_type = lookup(rate_based_statement.value, "aggregate_key_type", "IP")
-
-            dynamic "forwarded_ip_config" {
-              for_each = length(lookup(rule.value, "forwarded_ip_config", {})) == 0 ? [] : [lookup(rule.value, "forwarded_ip_config", {})]
-              content {
-                fallback_behavior = lookup(forwarded_ip_config.value, "fallback_behavior")
-                header_name       = lookup(forwarded_ip_config.value, "header_name")
-              }
-            }
-          }
-        }
-      }
-
-      dynamic "visibility_config" {
-        for_each = length(lookup(rule.value, "visibility_config")) == 0 ? [] : [lookup(rule.value, "visibility_config", {})]
-        content {
-          cloudwatch_metrics_enabled = lookup(visibility_config.value, "cloudwatch_metrics_enabled", true)
-          metric_name                = lookup(visibility_config.value, "metric_name", "${var.name_prefix}-ip-rate-based-rule-metric-name")
-          sampled_requests_enabled   = lookup(visibility_config.value, "sampled_requests_enabled", true)
-        }
-      }
-    }
-  }
-
   tags = var.tags
 
   dynamic "visibility_config" {
@@ -186,33 +138,4 @@ resource "aws_wafv2_web_acl_association" "alb_list" {
   web_acl_arn  = aws_wafv2_web_acl.main[0].arn
 
   depends_on = [aws_wafv2_web_acl.main]
-}
-
-#####
-# WAFv2 web acl logging configuration with kinesis firehose
-#####
-resource "aws_wafv2_web_acl_logging_configuration" "main" {
-  count = var.enabled && var.create_logging_configuration ? 1 : 0
-
-  log_destination_configs = var.log_destination_configs
-  resource_arn            = aws_wafv2_web_acl.main[0].arn
-
-  dynamic "redacted_fields" {
-    for_each = var.redacted_fields
-    content {
-      dynamic "single_header" {
-        for_each = length(lookup(redacted_fields.value, "single_header", {})) == 0 ? [] : [lookup(redacted_fields.value, "single_header", {})]
-        content {
-          name = lookup(single_header.value, "name", null)
-        }
-      }
-
-      dynamic "single_query_argument" {
-        for_each = length(lookup(redacted_fields.value, "single_query_argument", {})) == 0 ? [] : [lookup(redacted_fields.value, "single_query_argument", {})]
-        content {
-          name = lookup(single_query_argument.value, "name", null)
-        }
-      }
-    }
-  }
 }
