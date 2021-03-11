@@ -68,32 +68,13 @@ rules = [
     }
   ]
 
-
-regular_expressions_regex_pattern_set = [
+regular_expressions_byte_match = [
     {
       name     = "JaaS-Context-rule-1"
       priority = "4"
 
       visibility_config = {
-        metric_name = "JaaS-Context-rule-1-metric"
-      }
-
-      regex_pattern_set_reference_statement = {
-        arn = "arn:aws:wafv2:us-east-1:187945997467:regional/regexpatternset/jaas-dev-regex/a68685bf-f73c-425f-99cb-987cb3d43f68"
-        field_to_match = "uri_path"
-        priority = 0
-        type = "NONE"
-      }
-    }
-  ]
-
-regular_expressions_byte_match = [
-    {
-      name     = "JaaS-Context-rule-2"
-      priority = "5"
-
-      visibility_config = {
-        metric_name = "JaaS-Context-rule2-metric"
+        metric_name = "JaaS-Context-rule1-metric"
       }
 
       byte_match_statement = {
@@ -104,6 +85,25 @@ regular_expressions_byte_match = [
       }
     }
   ]
+
+regular_expressions_regex_pattern_set = [
+    {
+      name     = "JaaS-Context-rule-2"
+      priority = "4"
+
+      visibility_config = {
+        metric_name = "JaaS-Context-rule-2-metric"
+      }
+
+      regex_pattern_set_reference_statement = {
+        arn = "arn:aws:wafv2:us-east-1:187945997467:regional/regexpatternset/jaas-dev-regex/a68685bf-f73c-425f-99cb-987cb3d43f68"
+        priority = 0
+        type = "NONE"
+      }
+    }
+  ]
+
+
 
   
 

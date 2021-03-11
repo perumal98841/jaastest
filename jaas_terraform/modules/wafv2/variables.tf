@@ -32,11 +32,15 @@ variable "ip_set_rules" {
   default     = []
 }
 
-variable "regular_expressions" {
+variable "regular_expressions_regex_pattern_set" {
   description = "List of WAF ip set rules to detect web requests coming from particular IP addresses or address ranges."
   default     = []
 }
 
+variable "regular_expressions_byte_match" {
+  description = "List of WAF ip set rules to detect web requests coming from particular IP addresses or address ranges."
+  default     = []
+}
 
 variable "create_alb_association" {
   type        = bool

@@ -136,7 +136,9 @@ resource "aws_wafv2_web_acl" "main" {
           for_each = length(lookup(rule.value, "regex_pattern_set_reference_statement", {})) == 0 ? [] : [lookup(rule.value, "regex_pattern_set_reference_statement", {})]
           content {
             arn = lookup(regex_pattern_set_reference_statement.value, "arn")
-            #field_to_match = lookup(regex_pattern_set_reference_statement.value, "field_to_match")
+            field_to_match {
+                uri_path {}
+              }
             text_transformation {
               priority = lookup(regex_pattern_set_reference_statement.value, "priority")
               type = lookup(regex_pattern_set_reference_statement.value, "type")
@@ -182,13 +184,14 @@ dynamic "rule" {
 
       statement {
         dynamic "byte_match_statement" {
-          for_each = length(lookup(rule.value, "regex_pattern_set_reference_statement", {})) == 0 ? [] : [lookup(rule.value, "regex_pattern_set_reference_statement", {})]
+          for_each = length(lookup(rule.value, "byte_match_statement", {})) == 0 ? [] : [lookup(rule.value, "byte_match_statement", {})]
           content {
-            positional_constraint = lookup(regex_pattern_set_reference_statement.value, "positional_constraint")
-            #field_to_match = lookup(regex_pattern_set_reference_statement.value, "field_to_match")
+            positional_constraint = lookup(byte_match_statement.value, "positional_constraint")
+            search_string = lookup(byte_match_statement.value, "search_string")
+            #field_to_match = lookup(byte_match_statement.value, "field_to_match")
             text_transformation {
-              priority = lookup(regex_pattern_set_reference_statement.value, "priority")
-              type = lookup(regex_pattern_set_reference_statement.value, "type")
+              priority = lookup(byte_match_statement.value, "priority")
+              type = lookup(byte_match_statement.value, "type")
             }
           }
         }
