@@ -89,7 +89,7 @@ regular_expressions_byte_match = [
 regular_expressions_regex_pattern_set = [
     {
       name     = "JaaS-Context-rule-2"
-      priority = "4"
+      priority = "5"
 
       visibility_config = {
         metric_name = "JaaS-Context-rule-2-metric"
