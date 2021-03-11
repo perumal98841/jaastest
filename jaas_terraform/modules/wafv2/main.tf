@@ -248,22 +248,3 @@ resource "aws_wafv2_web_acl_association" "alb_list" {
 
   depends_on = [aws_wafv2_web_acl.main]
 }
-
-
-resource "aws_wafv2_regex_pattern_set" "jaas-regex" {
-  name = format("%s_RegexPattern", var.name_prefix)
-  count = length(var.regex_string) > 0 ? length(var.regex_string) : 0
-  scope = var.scope
-  dynamic regular_expression {
-  regex_string = var.regex_string[count.index]
-  } 
-
-   tags = merge(
-    {
-      "Name" = format("%s_RegexPattern", var.name_prefix)
-    },
-    var.business_tags,
-    var.technical_tags,
-  )
-}
-
