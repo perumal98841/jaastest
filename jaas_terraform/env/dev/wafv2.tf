@@ -68,6 +68,28 @@ rules = [
     }
   ]
 
+
+regular_expressions = [
+    {
+      name     = "JaaS-Context-rule-3"
+      priority = "4"
+
+      visibility_config = {
+        metric_name = "JaaS-Context-metric"
+      }
+
+      regex_pattern_set_reference_statement = {
+        arn = "arn:aws:wafv2:us-east-1:187945997467:regional/regexpatternset/jaas-dev-regex/a68685bf-f73c-425f-99cb-987cb3d43f68"
+        field_to_match = "uri_path"
+        priority = 0
+        type = "NONE"
+      }
+    }
+  ]
+
+
+  
+
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
