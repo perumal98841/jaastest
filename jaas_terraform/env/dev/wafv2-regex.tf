@@ -1,7 +1,7 @@
 # aws_wafv2_regex_pattern_set.example:
 resource "aws_wafv2_regex_pattern_set" "jaas-dev-regex" {
 
-    name        = "jaas-dev-regex"
+    name        = "jaas-dev-regex-pattern-set"
     scope       = "REGIONAL"
 
     regular_expression {
