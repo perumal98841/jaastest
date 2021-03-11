@@ -5,7 +5,7 @@ module "jaas_dev_wafv2" {
 
   scope = "REGIONAL"
   create_alb_association = true
-
+  regex_string = ["(^/ad-health/*|^/administrativeMonitor/*|^/checkDisplayName/*|^/plugin/*|^/images/*)","(^/ajaxBuildQueue|^/ajaxExecutors|^/favicon.ico|^/\\/static/*|^/.?stapler/*|^/j_acegi_security_check)"]
   allow_default_action = false # set to allow if not specified
 
   visibility_config = {

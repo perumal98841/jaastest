@@ -17,3 +17,8 @@ output "web_acl_capacity" {
   description = "The web ACL capacity units (WCUs) currently being used by this web ACL."
   value       = join("", aws_wafv2_web_acl.main.*.capacity)
 }
+
+output "regex_pattern_set_arn" {
+  description = "The ARN of the regex_pattern_set."
+  value       = join("", aws_wafv2_regex_pattern_set.jaas-regex.*.arn)
+}

@@ -82,3 +82,9 @@ variable "technical_tags" {
     type          =   map(string)
     default       =   {}
 }
+
+variable "regex_string" {
+  description = "A list of regex"
+  type        = list(string)
+  default     = []
+}
