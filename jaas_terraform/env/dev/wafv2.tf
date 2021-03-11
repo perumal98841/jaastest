@@ -96,7 +96,7 @@ regular_expressions_regex_pattern_set = [
       }
 
       regex_pattern_set_reference_statement = {
-        arn = "arn:aws:wafv2:us-east-1:187945997467:regional/regexpatternset/jaas-dev-regex/a68685bf-f73c-425f-99cb-987cb3d43f68"
+        arn = "aws_wafv2_regex_pattern_set.jaas-dev-regex.arn"
         priority = 0
         type = "NONE"
       }

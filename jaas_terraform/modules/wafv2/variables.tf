@@ -83,8 +83,3 @@ variable "technical_tags" {
     default       =   {}
 }
 
-variable "regex_string" {
-  description = "A list of regex"
-  type        = list(string)
-  default     = []
-}
