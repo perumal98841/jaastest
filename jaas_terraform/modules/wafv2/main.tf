@@ -251,13 +251,16 @@ resource "aws_wafv2_web_acl_association" "alb_list" {
 
 
 resource "aws_wafv2_regex_pattern_set" "jaas-regex" {
+  name = format("%s_RegexPattern", var.name_prefix)
   count = length(var.regex_string) > 0 ? length(var.regex_string) : 0
   scope = var.scope
-  regular_expression = var.regex_string[count.index]
+  dynamic regular_expression {
+  regex_string = var.regex_string[count.index]
+  } 
 
-  tags = merge(
+   tags = merge(
     {
-      "Name" = format("%s-${var.name_prefix}-Regex-Pattern")
+      "Name" = format("%s_RegexPattern", var.name_prefix)
     },
     var.business_tags,
     var.technical_tags,
