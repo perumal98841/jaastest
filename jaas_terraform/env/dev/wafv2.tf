@@ -67,7 +67,7 @@ rules = [
       }
     }
   ]
-
+allow_default_action = false
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
