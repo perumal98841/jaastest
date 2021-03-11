@@ -1,5 +1,5 @@
 # aws_wafv2_regex_pattern_set.example:
-resource "aws_wafv2_regex_pattern_set" "jaas-dev-regex" {
+resource "aws_wafv2_regex_pattern_set" "jaas_dev_regex_pattern_set" {
 
     name        = "jaas-dev-regex-pattern-set"
     scope       = "REGIONAL"
@@ -31,4 +31,9 @@ resource "aws_wafv2_regex_pattern_set" "jaas-dev-regex" {
     regular_expression {
         regex_string = "(^/user/*|^/logout/*|^/static/*|^/adjuncts/*|^/editDescription/*|^/configure/*)"
     }
+}
+
+output "jaas-dev-regex-pattern-set_arn" {
+  description = "The ARN of the Regex Pattern."
+  value       = join("", aws_wafv2_regex_pattern_set.jaas_dev_regex_pattern_set.*.arn)
 }

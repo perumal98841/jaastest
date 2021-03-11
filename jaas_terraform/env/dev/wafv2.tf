@@ -96,7 +96,7 @@ regular_expressions_regex_pattern_set = [
       }
 
       regex_pattern_set_reference_statement = {
-        arn = "aws_wafv2_regex_pattern_set.jaas-dev-regex.arn"
+        arn = aws_wafv2_regex_pattern_set.jaas_dev_regex_pattern_set.arn
         priority = 0
         type = "NONE"
       }
