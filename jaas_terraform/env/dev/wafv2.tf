@@ -69,13 +69,13 @@ rules = [
   ]
 
 
-regular_expressions = [
+regular_expressions_regex_pattern_set = [
     {
-      name     = "JaaS-Context-rule-3"
+      name     = "JaaS-Context-rule-1"
       priority = "4"
 
       visibility_config = {
-        metric_name = "JaaS-Context-metric"
+        metric_name = "JaaS-Context-rule-1-metric"
       }
 
       regex_pattern_set_reference_statement = {
@@ -87,6 +87,23 @@ regular_expressions = [
     }
   ]
 
+regular_expressions_byte_match = [
+    {
+      name     = "JaaS-Context-rule-2"
+      priority = "5"
+
+      visibility_config = {
+        metric_name = "JaaS-Context-rule2-metric"
+      }
+
+      byte_match_statement = {
+        positional_constraint = "EXACTLY"
+        search_string         = "/"
+        priority = 0
+        type = "NONE"
+      }
+    }
+  ]
 
   
 

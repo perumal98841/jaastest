@@ -108,7 +108,7 @@ resource "aws_wafv2_web_acl" "main" {
   }
 
   dynamic "rule" {
-    for_each = var.regular_expressions
+    for_each = var.regular_expressions_regex_pattern_set
 
     content {
       name     = lookup(rule.value, "name")
@@ -136,7 +136,56 @@ resource "aws_wafv2_web_acl" "main" {
           for_each = length(lookup(rule.value, "regex_pattern_set_reference_statement", {})) == 0 ? [] : [lookup(rule.value, "regex_pattern_set_reference_statement", {})]
           content {
             arn = lookup(regex_pattern_set_reference_statement.value, "arn")
-            field_to_match = lookup(regex_pattern_set_reference_statement.value, "field_to_match")
+            #field_to_match = lookup(regex_pattern_set_reference_statement.value, "field_to_match")
+            text_transformation {
+              priority = lookup(regex_pattern_set_reference_statement.value, "priority")
+              type = lookup(regex_pattern_set_reference_statement.value, "type")
+            }
+          }
+        }
+      }
+
+      dynamic "visibility_config" {
+        for_each = length(lookup(rule.value, "visibility_config")) == 0 ? [] : [lookup(rule.value, "visibility_config", {})]
+        content {
+          cloudwatch_metrics_enabled = lookup(visibility_config.value, "cloudwatch_metrics_enabled", true)
+          metric_name                = lookup(visibility_config.value, "metric_name", "${var.name_prefix}-ip-rule-metric-name")
+          sampled_requests_enabled   = lookup(visibility_config.value, "sampled_requests_enabled", true)
+        }
+      }
+    }
+  }
+
+dynamic "rule" {
+    for_each = var.regular_expressions_byte_match
+
+    content {
+      name     = lookup(rule.value, "name")
+      priority = lookup(rule.value, "priority")
+
+      action {
+        dynamic "allow" {
+          for_each = length(lookup(rule.value, "action", {})) == 0 || lookup(rule.value, "action", {}) == "allow" ? [1] : []
+          content {}
+        }
+
+        dynamic "count" {
+          for_each = lookup(rule.value, "action", {}) == "count" ? [1] : []
+          content {}
+        }
+
+        dynamic "block" {
+          for_each = lookup(rule.value, "action", {}) == "block" ? [1] : []
+          content {}
+        }
+      }
+
+      statement {
+        dynamic "byte_match_statement" {
+          for_each = length(lookup(rule.value, "regex_pattern_set_reference_statement", {})) == 0 ? [] : [lookup(rule.value, "regex_pattern_set_reference_statement", {})]
+          content {
+            positional_constraint = lookup(regex_pattern_set_reference_statement.value, "positional_constraint")
+            #field_to_match = lookup(regex_pattern_set_reference_statement.value, "field_to_match")
             text_transformation {
               priority = lookup(regex_pattern_set_reference_statement.value, "priority")
               type = lookup(regex_pattern_set_reference_statement.value, "type")
