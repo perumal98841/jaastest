@@ -188,7 +188,9 @@ dynamic "rule" {
           content {
             positional_constraint = lookup(byte_match_statement.value, "positional_constraint")
             search_string = lookup(byte_match_statement.value, "search_string")
-            #field_to_match = lookup(byte_match_statement.value, "field_to_match")
+            field_to_match {
+                uri_path {}
+              }
             text_transformation {
               priority = lookup(byte_match_statement.value, "priority")
               type = lookup(byte_match_statement.value, "type")
