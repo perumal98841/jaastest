@@ -6,7 +6,7 @@ module "jaas_dev_wafv2" {
   scope = "REGIONAL"
   create_alb_association = true
 
-  allow_default_action = true # set to allow if not specified
+  allow_default_action = false # set to allow if not specified
 
   visibility_config = {
     metric_name = "jaas-dev-wafv2-main-metrics"
@@ -67,7 +67,7 @@ rules = [
       }
     }
   ]
-allow_default_action = false
+
     business_tags = {
         BU = "ProductIT"
         CostCenter = "6465"
