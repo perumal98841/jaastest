@@ -5,7 +5,7 @@ module "records" {
 
   records = [
      {
-      name = "jenkins"
+      name = "jenkinsdr"
       type = "CNAME"
       ttl  = 3600
       records = ["${module.jaas_dev_alb.this_lb_dns_name}"]
