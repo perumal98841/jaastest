@@ -33,7 +33,7 @@ module "jaas_dev_alb" {
     {
       port               = 443
       protocol           = "HTTPS"
-      certificate_arn    = "arn:aws:acm:us-east-1:187945997467:certificate/954a2440-c467-481e-b3bc-5c2622f279b5"
+      certificate_arn    = "arn:aws:acm:eu-west-1:187945997467:certificate/e18b2fcb-67f2-4662-a634-167e2cc28b66"
       target_group_index = 0
     },
   ]
