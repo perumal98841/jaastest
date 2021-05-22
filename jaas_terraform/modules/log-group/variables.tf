@@ -1,4 +1,4 @@
-ariable "create" {
+variable "create" {
   description = "Whether to create the Cloudwatch log group"
   type        = bool
   default     = true
