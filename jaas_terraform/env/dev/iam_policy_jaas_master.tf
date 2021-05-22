@@ -57,6 +57,16 @@ data "aws_iam_policy_document" "ec2_policy" {
   }
 }
 
+data "aws_iam_policy_document" "cloudwatch_policy" {
+  statement {
+    sid       = "AllowCloudWatchAccess"
+    actions   = [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+    ]
+    resources = ["*"]
+  }
+}
 
 module "jaas_iam_policy_master" {
   source = "../../modules/iam_role_policy"
@@ -76,5 +86,12 @@ module "jaas_iam_policy_master_ec2" {
   source = "../../modules/iam_role_policy"
   policy_name = "jaas-ec2-policy"
   policy = data.aws_iam_policy_document.ec2_policy.json
+  role = module.jaas_iam_role_master.id
+}
+
+module "jaas_iam_policy_master_cloudwatch" {
+  source = "../../modules/iam_role_policy"
+  policy_name = "jaas-cloudwatch-policy"
+  policy = data.aws_iam_policy_document.cloudwatch_policy.json
   role = module.jaas_iam_role_master.id
 }
