@@ -5,7 +5,7 @@ module "jaas_prod_wafv2" {
 
   scope = "REGIONAL"
   create_alb_association = true
-
+  enabled = false
   allow_default_action = false # set to allow if not specified
 
   visibility_config = {

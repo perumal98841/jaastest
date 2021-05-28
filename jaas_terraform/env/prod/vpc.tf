@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_eip" "nat" {
-  count = 2
+  count = 0
    tags = {
         BU = "ProductIT"
         CostCenter = "6465"
