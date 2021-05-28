@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:lts-jdk11
 
 LABEL maintainer="Perumal Varadharajulu"
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
