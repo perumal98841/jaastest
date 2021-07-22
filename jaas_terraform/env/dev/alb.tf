@@ -15,11 +15,11 @@ module "jaas_dev_alb" {
   security_groups              = module.sg_jaas_alb.this_security_group_id
   subnets         = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
 
-
-    s3bucket_name = "jaas-dev-logs-us-east-1"
-    s3bucket_prefix = "alb-logs"
-    create_alb_log = true
-
+  access_logs = {
+       bucket = "jaas-dev-logs-us-east-1"
+       prefix = "alb-logs"
+       enabled = true
+     }
   http_tcp_listeners = [
     # Forward action is default, either when defined or undefined
     {
