@@ -14,7 +14,11 @@ create_lb = "false"
     internal = true
   security_groups              = module.sg_jaas_alb.this_security_group_id
   subnets         = [module.jaas_prod_vpc.private_subnets[0],module.jaas_prod_vpc.private_subnets[1]]
-
+  access_logs = {
+       bucket = module.jaas_prod_logs_s3_bucket.s3_bucket_id
+       prefix = "alb-logs"
+       enabled = true
+     }
   http_tcp_listeners = [
     # Forward action is default, either when defined or undefined
     {
