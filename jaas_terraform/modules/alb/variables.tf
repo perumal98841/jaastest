@@ -124,3 +124,21 @@ variable "extra_ssl_certs" {
   default     = []
 }
 
+variable "s3bucket_name" {
+  description = "S3 bucket name for ALB logs"
+  type        = string
+  default     = null
+}
+
+variable "s3bucket_prefix" {
+  description = "S3 bucket prefix for ALB logs"
+  type        = string
+  default     = null
+}
+
+variable "create_alb_log" {
+  description = "S3 bucket prefix for ALB logs"
+  type        = string
+  default     = false
+}
+

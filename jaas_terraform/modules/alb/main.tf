@@ -23,7 +23,11 @@ resource "aws_lb" "this" {
       private_ipv4_address = lookup(subnet_mapping.value, "private_ipv4_address", null)
     }
   }
-
+  access_logs {
+    bucket = var.s3bucket_name
+    prefix = var.s3bucket_prefix
+    enabled = var.create_alb_log
+  }
   tags = merge(
     {
       Name = var.name != null ? var.name : var.name_prefix
