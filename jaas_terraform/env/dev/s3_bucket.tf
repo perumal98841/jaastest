@@ -8,4 +8,3 @@ module "jaas_dev_logs_s3_bucket" {
 
   attach_elb_log_delivery_policy = true
 }
-}
