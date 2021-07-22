@@ -16,7 +16,7 @@ module "jaas_dev_alb" {
   subnets         = [module.jaas_dev_vpc.private_subnets[0],module.jaas_dev_vpc.private_subnets[1]]
 
   access_logs = {
-       bucket = "jaas-dev-logs-us-east-1"
+       bucket = module.jaas_dev_logs_s3_bucket.s3_bucket_id
        prefix = "alb-logs"
        enabled = true
      }
