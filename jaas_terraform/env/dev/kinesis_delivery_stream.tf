@@ -1,6 +1,6 @@
 module "jaas_dev_delivery_stream" {
     source      = "../../modules/kinesis_delivery_stream"
-    name        = "jaas-dev-delivery-stream"
+    name        = "aws-waf-logs-jaas-dev-delivery-stream"
     destination = "splunk"
 
 #s3_configuration 
