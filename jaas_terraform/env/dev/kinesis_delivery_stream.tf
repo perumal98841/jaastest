@@ -4,7 +4,7 @@ module "jaas_dev_delivery_stream" {
     destination = "splunk"
 
 #s3_configuration 
-    prefix = "jaas-dev-waf-logs-us-east-1"
+    prefix = "WAFlogs"
     compression_format = "GZIP"
     buffer_interval    = 400  
     buffer_size        = 10  
