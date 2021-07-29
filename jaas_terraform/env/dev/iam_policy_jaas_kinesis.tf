@@ -13,8 +13,7 @@ data "aws_iam_policy_document" "firehose_s3" {
   }
 }
 
-
-module "jaas_iam_policy_master" {
+module "jaas_iam_policy_kinesis" {
   source = "../../modules/iam_role_policy"
   policy_name = "jaas-kinesis-policy"
   policy = data.aws_iam_policy_document.firehose_s3.json
