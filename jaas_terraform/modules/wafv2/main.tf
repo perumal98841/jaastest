@@ -248,3 +248,9 @@ resource "aws_wafv2_web_acl_association" "alb_list" {
 
   depends_on = [aws_wafv2_web_acl.main]
 }
+
+
+resource "aws_wafv2_web_acl_logging_configuration" "this" {
+  log_destination_configs = var.log_destination_configs
+  resource_arn            = var.resource_arn
+}

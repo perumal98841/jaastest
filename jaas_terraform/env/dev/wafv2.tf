@@ -3,6 +3,9 @@ module "jaas_dev_wafv2" {
   name_prefix = "jaas-dev-wafv2"
   alb_arn     = module.jaas_dev_alb.this_lb_arn
 
+  log_destination_configs = module.jaas_dev_delivery_stream.arn
+  resource_arn            = local.jaas_dev_wafv2.arn
+
   scope = "REGIONAL"
   create_alb_association = true
 
@@ -102,10 +105,6 @@ regular_expressions_regex_pattern_set = [
       }
     }
   ]
-
-
-
-  
 
     business_tags = {
         BU = "ProductIT"

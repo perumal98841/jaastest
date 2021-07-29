@@ -83,3 +83,12 @@ variable "technical_tags" {
     default       =   {}
 }
 
+variable "log_destination_configs" {
+  type        = string
+  description = "The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL"
+}
+
+variable "resource_arn" {
+  type        = string
+  description = "The Amazon Resource Name (ARN) of the web ACL that you want to associate"
+}
