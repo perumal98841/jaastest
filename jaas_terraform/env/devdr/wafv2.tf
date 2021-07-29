@@ -3,6 +3,10 @@ module "jaas_dev_wafv2" {
   name_prefix = "jaas-dev-wafv2"
   alb_arn     = module.jaas_dev_alb.this_lb_arn
 
+  log_destination_configs = module.jaas_devdr_delivery_stream.firehose_delivery_stream_arn
+  resource_arn            = module.jaas_devdr_wafv2.web_acl_arn
+
+
   scope = "REGIONAL"
   create_alb_association = true
 
