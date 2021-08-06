@@ -1,7 +1,7 @@
 module "jaas_prod_bastion_prod" {
     source      = "../../modules/ec2"
 
-    instance_count = 0
+    instance_count = 1
     name          = "JaaS-PROD-Bastion"
   ami           = "ami-02404348e17201e00"
   instance_type = "t3a.small"
