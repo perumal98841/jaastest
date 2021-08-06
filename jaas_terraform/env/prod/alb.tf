@@ -7,7 +7,7 @@ module "jaas_prod_alb" {
     source      = "../../modules/alb"
 
   name = "jaas-prod-alb-${random_pet.this.id}"
-create_lb = "false"
+create_lb = "true"
   load_balancer_type = "application"
 
     vpc_id = module.jaas_prod_vpc.vpc_id

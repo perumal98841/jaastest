@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_eip" "nat" {
-  count = 0
+  count = 2
    tags = {
         BU = "ProductIT"
         CostCenter = "6465"
@@ -26,8 +26,8 @@ module "jaas_prod_vpc" {
     public_subnets = ["10.8.25.0/28","10.8.25.16/28"]
     private_subnets = ["10.8.25.32/28","10.8.25.48/28","10.8.25.96/27","10.8.25.128/27","10.8.25.160/28","10.8.25.176/28"]
 
-    enable_nat_gateway = false
-    single_nat_gateway = false
+    enable_nat_gateway = true
+    single_nat_gateway = true
     one_nat_gateway_per_az = false
     reuse_nat_ips = true
     external_nat_ip_ids = "${aws_eip.nat.*.id}"    
