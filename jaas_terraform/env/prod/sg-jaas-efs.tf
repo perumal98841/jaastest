@@ -14,7 +14,7 @@ module "sg_jaas_efs" {
       from_port                = 2049
       to_port                  = 2049
       protocol                 = 6
-      description              = "Service name"
+      description              = "EFS for Jenkins Master Node"
       source_security_group_id = data.aws_security_group.master_jenkins.id
     },
   ]

@@ -26,29 +26,21 @@ module "sg_jaas_master" {
       from_port                = 80
       to_port                  = 80
       protocol                 = 6
-      description              = "HTTP"
+      description              = "HTTP for ALB"
       source_security_group_id = data.aws_security_group.alb.id
     },
-    {
-      from_port                = 8080
-      to_port                  = 8080
-      protocol                 = 6
-      description              = "HTTP-Jenkins"
-      source_security_group_id = data.aws_security_group.alb.id
-    },
-
     {
       from_port                = 443
       to_port                  = 443
       protocol                 = 6
-      description              = "HTTPS"
+      description              = "HTTPS for ALB"
       source_security_group_id = data.aws_security_group.alb.id
     },
     {
       from_port                = 22
       to_port                  = 22
       protocol                 = 6
-      description              = "SSH"
+      description              = "SSH for Bastion host"
       source_security_group_id = data.aws_security_group.bastion.id
     },
   ]

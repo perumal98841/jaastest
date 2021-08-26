@@ -19,14 +19,14 @@ module "sg_jaas_agent_linux" {
       from_port                = 22
       to_port                  = 22
       protocol                 = 6
-      description              = "SSH"
+      description              = "SSH for Jenkins Master Node"
       source_security_group_id = data.aws_security_group.master_linux.id
     },
     {
       from_port                = 22
       to_port                  = 22
       protocol                 = 6
-      description              = "SSH"
+      description              = "SSH for Bastion Node"
       source_security_group_id = data.aws_security_group.bastion_linux.id
     },
   ]
