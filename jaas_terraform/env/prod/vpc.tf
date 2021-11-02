@@ -19,12 +19,12 @@ module "jaas_prod_vpc" {
     aws_region = "us-east-1"
     name = "jaas-prod"
     vpcname ="jaas-prod-vpc"
-    cidr    = "10.8.25.0/24"
+    cidr    = "10.3.168.0/24"
     enable_dns_hostnames             = true
     enable_dns_support               = true
     azs = ["us-east-1a","us-east-1b"]
-    public_subnets = ["10.8.25.0/28","10.8.25.16/28"]
-    private_subnets = ["10.8.25.32/28","10.8.25.48/28","10.8.25.96/27","10.8.25.128/27","10.8.25.160/28","10.8.25.176/28"]
+    public_subnets = ["10.3.168.0/28","10.3.168.16/28"]
+    private_subnets = ["10.3.168.32/28","10.3.168.48/28","10.3.168.96/27","10.3.168.128/27","10.3.168.160/28","10.3.168.176/28"]
 
     enable_nat_gateway = true
     single_nat_gateway = false
