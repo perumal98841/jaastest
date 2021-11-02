@@ -21,7 +21,7 @@ module "sg_jaas_efs" {
     egress_with_cidr_blocks = [
     {
       rule        = "all-all"
-      cidr_blocks = "10.8.25.0/24"
+      cidr_blocks = "10.3.168.0/24"
     },
   ]
     business_tags = {
