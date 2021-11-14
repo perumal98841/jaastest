@@ -1,7 +1,7 @@
 locals {
   user_data = <<EOF
 #!/bin/bash
-echo "$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone).fs-0e806eae0c3d74ba9.efs.us-east-1.amazonaws.com:/ /efs-volume nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
+echo "$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone).fs-08201964a45b689c9.efs.us-east-1.amazonaws.com:/ /efs-volume nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
 mount -a -t nfs4
 chown ec2-user:ec2-user /efs-volume/jaas
 echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 152429829684.dkr.ecr.us-east-1.amazonaws.com --password-stdin
