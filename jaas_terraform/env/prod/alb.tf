@@ -37,7 +37,7 @@ create_lb = "true"
     {
       port               = 443
       protocol           = "HTTPS"
-      certificate_arn    = "arn:aws:acm:us-east-1:152429829684:certificate/aba21481-8efc-42f8-b3f6-030ebbf5cc52"
+      certificate_arn    = "arn:aws:acm:us-east-1:152429829684:certificate/fe593735-771f-461f-82b9-a1b8b7c6b4ab"
       target_group_index = 0
     },
   ]
