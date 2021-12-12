@@ -3,7 +3,7 @@ locals {
 #!/bin/bash
 echo "$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone).fs-0a9e3e50721e25b89.efs.us-east-1.amazonaws.com:/ /efs-volume nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
 mount -a -t nfs4
-chown ec2-user:ec2-user /efs-volume/jaas
+sudo chown -R ec2-user:ec2-user /efs-volume
 echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
 docker pull 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.3
 docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-1 --log-opt awslogs-group=jaas-dev-master-log-us-east-1 -p 80:8080 -p 50000:50000 -v /efs-volume/jaas:/var/jenkins_home 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.3
