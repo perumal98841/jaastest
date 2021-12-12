@@ -1,7 +1,6 @@
 module "sg_jaas_bastion_dev" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
-    create = "false"    
     name = "jaas-dev-sg-jaas-bastion-dev"
     vpc_id = module.jaas_dev_vpc.vpc_id
     description = "Security Group for JaaS Bastion, managed by Terraform"
