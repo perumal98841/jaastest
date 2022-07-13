@@ -25,7 +25,8 @@ module "jaas_lc_asg" {
   image_id                     = "ami-0ee10465ef344ec44"
   # OLD image = image_id                     = "ami-045641ada9f1b5a4e"
   instance_type                = "t3a.small"
-  key_name                     = module.keypair_master.this_key_pair_key_name
+  #key_name                     = module.keypair_master.this_key_pair_key_name
+  key_name                     = "perumal-ubuntu"
   security_groups              = module.sg_jaas_master.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.jaas_iam_instance_profile.name
