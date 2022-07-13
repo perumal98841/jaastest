@@ -24,7 +24,7 @@ module "jaas_prod_vpc" {
     enable_dns_support               = true
     azs = ["us-east-1a","us-east-1b"]
     public_subnets = ["10.3.168.0/28","10.3.168.16/28"]
-    private_subnets = ["10.3.168.32/28","10.3.168.48/28","10.3.168.96/27","10.3.168.128/27","10.3.168.160/28","10.3.168.176/28"]
+    private_subnets = ["10.3.168.32/28","10.3.168.48/28","10.3.168.96/27","10.3.168.128/27","10.3.168.192/27","10.3.168.224/27"]
 
     enable_nat_gateway = true
     single_nat_gateway = false
