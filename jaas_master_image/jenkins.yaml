@@ -24,8 +24,11 @@ jenkins:
       allowsSignup: false
       users:
        - id: admin
-         password: ${adminpw:-PAssw0rd}
-
+         password: ${adminpw:-PAssw0rd}      
+       - id: jaasadmindev
+         password: ${jaasadmindevpw:-L6iOHa3b2gPbB8dFJhO}
+       - id: jaasadminprod
+         password: ${jaasadminprodpw:-3b2gPbB8dFJhOL6iOHa}
   authorizationStrategy:
     globalMatrix:
       Permissions:
