@@ -5,13 +5,10 @@ resource "aws_wafv2_regex_pattern_set" "jaas_prod_regex_pattern_set" {
     scope       = "REGIONAL"
 
     regular_expression {
-        regex_string = "(^/ad-health/*|^/administrativeMonitor/*|^/checkDisplayName/*|^/plugin/*|^/images/*)"
+        regex_string = "(^/ad-health/*|^/administrativeMonitor/*|^/checkDisplayName/*|^/plugin/*|^/images/*|^/descriptor/*)"
     }
     regular_expression {
         regex_string = "(^/ajaxBuildQueue|^/ajaxExecutors|^/favicon.ico|^/\\/static/*|^/.?stapler/*|^/j_acegi_security_check|^/newView|^/createView|^/j_spring_security_check)"
-    }
-    regular_expression {
-        regex_string = "(^/cli/*|^/script/*|^/cancelQuietDown/*)"
     }
     regular_expression {
         regex_string = "(^/configureSecurity/*|^/credentials/*|^/configureCredentials/*|^/role-strategy/*|^/securityRealm//*|^/scriptApproval/*|^/descriptorByName/*)"
