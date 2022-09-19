@@ -17,7 +17,7 @@ resource "aws_wafv2_regex_pattern_set" "jaas_dev_regex_pattern_set" {
         regex_string = "(^/configureTools/*|^/pluginManager/*|^/computer/*|^/aws/*|^/configuration-as-code/*|^/administrativeMonitor/*)"
     }
     regular_expression {
-        regex_string = "(^/manage/*|^/job/*|^/view/*|^/pluginusage/*|^/lockable-resources/*)"
+        regex_string = "(^/manage/*|^/job/*|^/view/*|^/pluginusage/*|^/lockable-resources/*|^/git/*)"
     }
     regular_expression {
         regex_string = "(^/me/*|^/fingerprintCheck/*|^/projectRelationship/*|^/asynchPeople/*|^/newView/*)"
