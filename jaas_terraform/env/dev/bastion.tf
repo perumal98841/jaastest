@@ -4,7 +4,7 @@ module "jaas_dev_bastion" {
     instance_count = 1
     name          = "perumal-JaaS-DEV-Bastion"
   ami           = "ami-02404348e17201e00"
-  instance_type = "t3a.xlarge"
+  instance_type = "t3a.medium"
   subnet_id     = tolist(module.jaas_dev_vpc.public_subnets)[0]
   private_ips                 = ["10.3.170.14"]
   vpc_security_group_ids      =   module.sg_jaas_bastion.this_security_group_id
