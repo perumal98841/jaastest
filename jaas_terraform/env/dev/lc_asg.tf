@@ -21,7 +21,7 @@ module "jaas_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "jaas-dev-lc"
-  image_id                     = "ami-0b5adbc90c88eca46"
+  image_id                     = "ami-073ff107ef7ac6813"
   # OLD image = image_id                     = "ami-045641ada9f1b5a4e"
   instance_type                = "t3a.small"
   #key_name                     = module.keypair_master.this_key_pair_key_name
