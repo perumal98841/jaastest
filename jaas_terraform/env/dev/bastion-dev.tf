@@ -1,8 +1,8 @@
 module "jaas_dev_bastion_dev" {
     source      = "../../modules/ec2"
 
-    instance_count = 0
-    name          = "JaaS-DEV-Bastion"
+    instance_count = 1
+    name          = "JaaS-DEV-Bastion-PrivX"
   ami           = "ami-02404348e17201e00"
   instance_type = "t3a.medium"
   subnet_id     = tolist(module.jaas_dev_vpc.private_subnets)[1]
