@@ -55,6 +55,14 @@ resource "aws_autoscaling_group" "this" {
   service_linked_role_arn   = var.service_linked_role_arn
   max_instance_lifetime     = var.max_instance_lifetime
 
+  tags = [
+    {
+      key                 = "Name"
+      value               = var.name
+      propagate_at_launch = true
+    },
+  ]
+
   #tags = concat(
   #  [
   #    {

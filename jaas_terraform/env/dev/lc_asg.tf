@@ -23,7 +23,7 @@ module "jaas_lc_asg" {
   lc_name = "jaas-dev-lc"
   image_id                     = "ami-04a664a32c955c2c1"
   # OLD image = image_id                     = "ami-073ff107ef7ac6813"
-  instance_type                = "t3a.medium"
+  instance_type                = "t3a.small"
   #key_name                     = module.keypair_master.this_key_pair_key_name
   key_name                     = "perumal-ubuntu"
   security_groups              = module.sg_jaas_master.this_security_group_id
