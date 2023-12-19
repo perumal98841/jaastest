@@ -1,7 +1,7 @@
 module "jaas_dev_bastion" {
     source      = "../../modules/ec2"
 
-    instance_count = 1
+    instance_count = 0
     name          = "perumal-JaaS-DEV-Bastion"
   ami           = "ami-02404348e17201e00"
   instance_type = "t3a.medium"
