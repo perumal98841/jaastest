@@ -23,10 +23,10 @@ resource "aws_wafv2_regex_pattern_set" "jaas_prod_regex_pattern_set" {
         regex_string = "(^/me/*|^/fingerprintCheck/*|^/projectRelationship/*|^/asynchPeople/*|^/newView/*)"
     }
     regular_expression {
-        regex_string = "(^/systemInfo/*|^/extensionList/*|^/log/*|^/load-statistics/*|^/overallLoad/*|^/about/*)"
+        regex_string = "(^/systemInfo/*|^/extensionList/*|^/log/*|^/load-statistics/*|^/overallLoad/*|^/about/*|^/configSubmit)"
     }
     regular_expression {
-        regex_string = "(^/user/*|^/logout/*|^/static/*|^/adjuncts/*|^/editDescription/*|^/configure/*)"
+        regex_string = "(^/user/*|^/logout/*|^/static/*|^/adjuncts/*|^/editDescription/*|^/configure/*|^/defaultJDKCheck|^/publisher/ExtendedEmailPublisher/*)"
     }
 }
 
