@@ -51,6 +51,13 @@ module "sg_jaas_master" {
       description              = "SSH"
       source_security_group_id = data.aws_security_group.bastion.id
     },
+    {
+      from_port                = 8080
+      to_port                  = 8080
+      protocol                 = 6
+      description              = "Jenkins Port"
+      source_security_group_id = data.aws_security_group.bastion.id
+    },    
   ]
 
 
