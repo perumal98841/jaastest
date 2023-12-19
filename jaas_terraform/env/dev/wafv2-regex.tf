@@ -8,7 +8,7 @@ resource "aws_wafv2_regex_pattern_set" "jaas_dev_regex_pattern_set" {
         regex_string = "(^/ad-health/*|^/administrativeMonitor/*|^/checkDisplayName/*|^/plugin/*|^/images/*|^/descriptor/*|^/help/*|^/markupFormatter/*|^/cloud/*)"
     }
     regular_expression {
-        regex_string = "(^/ajaxBuildQueue|^/ajaxExecutors|^/favicon.ico|^/\\/static/*|^/.?stapler/*|^/j_acegi_security_check|^/newView|^/createView|^/j_spring_security_check|^/checkViewName|^/defaultJDKCheck|^/publisher/ExtendedEmailPublisher/*)"
+        regex_string = "(^/ajaxBuildQueue|^/ajaxExecutors|^/favicon.ico|^/\\/static/*|^/.?stapler/*|^/j_acegi_security_check|^/newView|^/createView|^/j_spring_security_check|^/checkViewName)"
     }
     regular_expression {
         regex_string = "(^/configureSecurity/*|^/credentials/*|^/configureCredentials/*|^/role-strategy/*|^/securityRealm//*|^/scriptApproval/*|^/descriptorByName/*)"
@@ -26,7 +26,7 @@ resource "aws_wafv2_regex_pattern_set" "jaas_dev_regex_pattern_set" {
         regex_string = "(^/systemInfo/*|^/extensionList/*|^/log/*|^/load-statistics/*|^/overallLoad/*|^/about/*)"
     }
     regular_expression {
-        regex_string = "(^/user/*|^/logout/*|^/static/*|^/adjuncts/*|^/editDescription/*|^/configure/*)"
+        regex_string = "(^/user/*|^/logout/*|^/static/*|^/adjuncts/*|^/editDescription/*|^/configure/*|^/defaultJDKCheck|^/publisher/ExtendedEmailPublisher/*)"
     }
 }
 
