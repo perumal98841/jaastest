@@ -50,7 +50,8 @@ rules = [
           "EC2MetaDataSSRF_BODY",
           "GenericLFI_QUERYARGUMENTS",
           "GenericRFI_QUERYARGUMENTS",
-          "GenericRFI_BODY"
+          "GenericRFI_BODY",
+          "CrossSiteScripting_BODY"
         ]
       }
     },
