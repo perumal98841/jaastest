@@ -22,7 +22,7 @@ module "jaas_lc_asg" {
   # create_lc = false # disables creation of launch configuration
   lc_name = "jaas-prod-lc"
 
-  image_id                     = "ami-0a0fffe634e933e3a"
+  image_id                     = "ami-0e4956e2245a7b5fd"
   # OLD Image image_id                     = "ami-0bc1a2d373fcebcdb"  
   instance_type                = "t3a.small"
 #  key_name                     = module.keypair_master.this_key_pair_key_name
