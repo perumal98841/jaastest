@@ -21,8 +21,8 @@ module "jaas_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "jaas-dev-lc"
-  image_id                     = "ami-0352b86d25e5cf435"
-  # OLD image = image_id                     = "ami-0c7f2cc2e71e900c3"
+  image_id                     = "ami-0a0fffe634e933e3a"
+  # OLD image = image_id                     = "ami-0352b86d25e5cf435"
   instance_type                = "t3a.small"
   #key_name                     = module.keypair_master.this_key_pair_key_name
   key_name                     = "perumal-ubuntu"
