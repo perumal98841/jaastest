@@ -20,7 +20,7 @@ resource "aws_wafv2_regex_pattern_set" "jaas_prod_regex_pattern_set" {
         regex_string = "(^/manage/*|^/job/*|^/view/*|^/pluginusage/*|^/lockable-resources/*|^/git/*|^/i18n/*|^/widget/*)"
     }
     regular_expression {
-        regex_string = "(^/me/*|^/fingerprintCheck/*|^/projectRelationship/*|^/asynchPeople/*|^/newView/*)"
+        regex_string = "(^/me/*|^/fingerprintCheck/*|^/projectRelationship/*|^/asynchPeople/*|^/newView/*|^/label/*|^/pipeline-syntax/*)"
     }
     regular_expression {
         regex_string = "(^/systemInfo/*|^/extensionList/*|^/log/*|^/load-statistics/*|^/overallLoad/*|^/about/*|^/configSubmit)"
