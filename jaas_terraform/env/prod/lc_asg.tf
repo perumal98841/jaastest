@@ -24,7 +24,7 @@ module "jaas_lc_asg" {
 
   image_id                     = "ami-0e4956e2245a7b5fd"
   # OLD Image image_id                     = "ami-0bc1a2d373fcebcdb"  
-  instance_type                = "t3a.small"
+  instance_type                = "t3a.medium"
 #  key_name                     = module.keypair_master.this_key_pair_key_name
   key_name                     = "New-key"
   security_groups              = module.sg_jaas_master.this_security_group_id
